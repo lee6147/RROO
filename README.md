@@ -1918,19 +1918,7 @@ journey
 <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Confetti%20Ball.png" alt="Confetti Ball" width="100" />
 <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Party%20Popper.png" alt="Party Popper" width="100" />
 
-```
-                                   🌟
-                              🌟    ✨    🌟
-                         🌟              🌟
-                    ✨         🎆 🎇         ✨
-               🌟        🎇 🎉🎊🎉 🎆        🌟
-          🌟         🎆   🎊     🎊   🎇         ✨
-               ✨      🎇  🎉 🌟 🎉  🎆      🌟
-                    🌟    🎆 🎊 🎇    ✨
-                         ✨   🌟   🌟
-                              🌟
-                                   ✨
-```
+
 
 ### 🏆 Git 학습을 완료하셨네요!
 
