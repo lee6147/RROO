@@ -65,7 +65,7 @@
 
 <div align="center">
 <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Floppy%20Disk.png" alt="Floppy" width="60" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Time%20Machine.png" alt="Time Machine" width="70" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Hourglass%20Done.png" alt="Hourglass" width="70" />
 <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Floppy%20Disk.png" alt="Floppy" width="60" />
 </div>
 
@@ -2060,6 +2060,5 @@ journey
 
 **Made with ❤️ for Git beginners**
 
-![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Flee6147%2FRROO&count_bg=%2379C83D&title_bg=%23555555&icon=git.svg&icon_color=%23E7E7E7&title=visitors&edge_flat=false)
 
 </div>
