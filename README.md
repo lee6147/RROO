@@ -1,11 +1,19 @@
 <div align="center">
 
-# 🚀 Git 완벽 가이드: A부터 Z까지
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=180&section=header&text=Git%20완벽%20가이드&fontSize=42&fontColor=fff&animation=twinkling&fontAlignY=32&desc=A부터%20Z까지%20초보자를%20위한%20Git%20튜토리얼&descSize=18&descAlignY=52" width="100%" />
+
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Rocket.png" alt="Rocket" width="80" />
+
+<a href="https://git-scm.com">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=F05032&center=true&vCenter=true&multiline=true&repeat=true&width=500&height=80&lines=Welcome+to+Git+World!+%F0%9F%8C%8D;%EB%B2%84%EC%A0%84+%EA%B4%80%EB%A6%AC%EC%9D%98+%EB%AA%A8%EB%93%A0+%EA%B2%83+%F0%9F%93%9A" alt="Typing SVG" />
+</a>
 
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
-![Version](https://img.shields.io/badge/Version-1.0.0-blue?style=for-the-badge)
+![Version](https://img.shields.io/badge/Version-2.0.0-blue?style=for-the-badge)
 ![Korean](https://img.shields.io/badge/한국어-🇰🇷-red?style=for-the-badge)
+
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Bookmark%20Tabs.png" alt="Bookmark" width="50" />
 
 **초보자도 쉽게 이해할 수 있는 Git 사용법 완전 정복!**
 
@@ -27,22 +35,39 @@
 
 ## 📚 목차
 
+### 🌱 초급
 1. [Git이란 무엇인가?](#-git이란-무엇인가)
 2. [Git 설치하기](#-git-설치하기)
-3. [Git 초기 설정](#-git-초기-설정)
+3. [Git 초기 설정](#%EF%B8%8F-git-초기-설정)
 4. [저장소 만들기](#-저장소-만들기)
 5. [Git의 3가지 영역 이해하기](#-git의-3가지-영역-이해하기)
-6. [기본 명령어](#-기본-명령어)
+6. [기본 명령어](#%EF%B8%8F-기본-명령어)
+
+### 🌿 중급
 7. [브랜치 다루기](#-브랜치-다루기)
 8. [원격 저장소 (GitHub)](#-원격-저장소-github)
 9. [협업하기](#-협업하기)
 10. [되돌리기](#-되돌리기)
-11. [고급 기능](#-고급-기능)
-12. [유용한 팁들](#-유용한-팁들)
+11. [Merge 전략](#-merge-전략)
+
+### 🚀 고급
+12. [고급 기능](#-고급-기능)
+13. [Interactive Rebase](#-interactive-rebase)
+14. [Git Reflog - 실수 복구](#-git-reflog---실수-복구)
+15. [Git Bisect - 버그 찾기](#-git-bisect---버그-찾기)
+16. [Git Hooks - 자동화](#-git-hooks---자동화)
+17. [Git Submodule](#-git-submodule)
+18. [유용한 팁들](#-유용한-팁들)
 
 ---
 
 ## 🤔 Git이란 무엇인가?
+
+<div align="center">
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Floppy%20Disk.png" alt="Floppy" width="60" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Time%20Machine.png" alt="Time Machine" width="70" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Floppy%20Disk.png" alt="Floppy" width="60" />
+</div>
 
 ### 📖 쉬운 설명
 
@@ -228,6 +253,12 @@ git config --global core.editor "code --wait"
 
 ## 📁 저장소 만들기
 
+<div align="center">
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Card%20File%20Box.png" alt="File Box" width="50" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/File%20Folder.png" alt="Folder" width="60" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Open%20File%20Folder.png" alt="Open Folder" width="60" />
+</div>
+
 ### 🆕 새 저장소 만들기 (git init)
 
 ```bash
@@ -263,9 +294,29 @@ git clone https://github.com/username/repository.git
    └── 모든 태그
 ```
 
+### 🎛️ git clone 유용한 옵션들
+
+```bash
+# 특정 브랜치만 클론
+git clone -b develop https://github.com/username/repo.git
+
+# 폴더 이름 지정해서 클론
+git clone https://github.com/username/repo.git my-folder
+
+# 최신 커밋만 가져오기 (얕은 클론 - 빠름!)
+git clone --depth 1 https://github.com/username/repo.git
+
+# 특정 태그로 클론
+git clone --branch v1.0.0 https://github.com/username/repo.git
+```
+
 ---
 
 ## 🎯 Git의 3가지 영역 이해하기
+
+<div align="center">
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Bullseye.png" alt="Bullseye" width="70" />
+</div>
 
 > [!IMPORTANT]
 > 💡 **이것만 이해하면 Git의 80%는 끝!**
@@ -352,6 +403,12 @@ flowchart LR
 ---
 
 ## 🛠️ 기본 명령어
+
+<div align="center">
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Laptop.png" alt="Laptop" width="60" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Keyboard.png" alt="Keyboard" width="60" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Desktop%20Computer.png" alt="Desktop" width="60" />
+</div>
 
 ### 📊 상태 확인 (git status)
 
@@ -487,6 +544,21 @@ git log --oneline --graph --all
 
 # 최근 5개만 보기
 git log -5
+
+# 특정 파일의 로그만 보기
+git log -- README.md
+
+# 특정 작성자의 커밋만
+git log --author="홍길동"
+
+# 날짜 범위로 필터링
+git log --since="2024-01-01" --until="2024-12-31"
+
+# 커밋 내용(diff) 함께 보기
+git log -p
+
+# 변경된 파일 목록만 보기
+git log --stat
 ```
 
 ```
@@ -531,6 +603,12 @@ diff --git a/README.md b/README.md
 ---
 
 ## 🌿 브랜치 다루기
+
+<div align="center">
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Animals/Deciduous%20Tree.png" alt="Tree" width="50" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Animals/Evergreen%20Tree.png" alt="Pine" width="60" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Animals/Deciduous%20Tree.png" alt="Tree" width="50" />
+</div>
 
 ### 🤔 브랜치란?
 
@@ -696,6 +774,14 @@ git branch -D feature/login
 
 ## 🌐 원격 저장소 (GitHub)
 
+<div align="center">
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Globe%20Showing%20Americas.png" alt="Globe" width="50" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Cloud.png" alt="Cloud" width="60" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Globe%20Showing%20Asia-Australia.png" alt="Globe" width="50" />
+
+**전 세계 어디서나 접근 가능!**
+</div>
+
 ### 📡 원격 저장소란?
 
 > [!TIP]
@@ -755,6 +841,18 @@ git remote add origin https://github.com/username/repo.git
 
 # 연결된 원격 저장소 확인
 git remote -v
+
+# 원격 저장소 URL 변경
+git remote set-url origin https://github.com/username/new-repo.git
+
+# 원격 저장소 삭제
+git remote remove origin
+
+# 원격 저장소 이름 변경
+git remote rename origin upstream
+
+# 여러 원격 저장소 추가 (예: fork한 경우)
+git remote add upstream https://github.com/original/repo.git
 ```
 
 ```
@@ -764,6 +862,22 @@ origin  https://github.com/username/repo.git (fetch)
 origin  https://github.com/username/repo.git (push)
 
 💡 'origin'은 원격 저장소의 별명이에요!
+```
+
+### 📡 원격 브랜치 관리
+
+```bash
+# 원격 브랜치 목록 보기
+git branch -r
+
+# 원격 브랜치 정보 업데이트
+git remote update
+
+# 삭제된 원격 브랜치 정리
+git remote prune origin
+
+# 또는 fetch할 때 자동 정리
+git fetch --prune
 ```
 
 ### ⬆️ 푸시 (git push)
@@ -837,6 +951,14 @@ git pull:
 
 ## 👥 협업하기
 
+<div align="center">
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Man%20Technologist.png" alt="Man Tech" width="60" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Handshake.png" alt="Handshake" width="70" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Woman%20Technologist.png" alt="Woman Tech" width="60" />
+
+**함께하면 더 강력해집니다!**
+</div>
+
 ### 🔄 기본 협업 워크플로우
 
 ```mermaid
@@ -894,6 +1016,14 @@ sequenceDiagram
 ---
 
 ## ⏪ 되돌리기
+
+<div align="center">
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Alarm%20Clock.png" alt="Clock" width="50" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Symbols/Counterclockwise%20Arrows%20Button.png" alt="Undo" width="60" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Hourglass%20Done.png" alt="Hourglass" width="50" />
+
+**실수해도 걱정 마세요!**
+</div>
 
 ### 🎯 상황별 되돌리기 방법
 
@@ -963,6 +1093,14 @@ revert (취소 커밋 추가):
 
 ## 🔧 고급 기능
 
+<div align="center">
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Fire.png" alt="Fire" width="50" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/High%20Voltage.png" alt="High Voltage" width="60" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Fire.png" alt="Fire" width="50" />
+
+**이제부터 고급 기능을 배워봅시다!**
+</div>
+
 ### 📦 Stash (임시 저장)
 
 > [!TIP]
@@ -1015,6 +1153,46 @@ git stash drop
 
 # 모든 stash 삭제
 git stash clear
+
+# 추적되지 않는 파일도 포함해서 stash
+git stash -u
+
+# stash 내용 미리보기
+git stash show -p stash@{0}
+
+# stash를 새 브랜치로 복원
+git stash branch new-branch stash@{0}
+```
+
+### 🌳 Git Worktree
+
+> [!TIP]
+> **Worktree** = 하나의 저장소에서 여러 브랜치를 동시에 작업!
+
+```bash
+# 새 worktree 생성
+git worktree add ../feature-branch feature/login
+
+# worktree 목록 보기
+git worktree list
+
+# worktree 삭제
+git worktree remove ../feature-branch
+
+# worktree 정리 (삭제된 디렉토리 정리)
+git worktree prune
+```
+
+```
+📂 폴더 구조 예시:
+
+projects/
+├── my-project/          ← main 브랜치 (기본)
+│   └── .git/
+├── my-project-feature/  ← feature/login 브랜치 (worktree)
+└── my-project-hotfix/   ← hotfix/bug 브랜치 (worktree)
+
+💡 브랜치 전환 없이 동시에 여러 브랜치 작업 가능!
 ```
 
 ### 🏷️ Tag (태그)
@@ -1034,6 +1212,278 @@ git push origin v1.0.0
 
 # 모든 태그 푸시
 git push origin --tags
+```
+
+---
+
+## 🎨 Interactive Rebase
+
+> [!TIP]
+> **Interactive Rebase** = 커밋 히스토리를 자유자재로 편집!
+
+### 📝 기본 사용법
+
+```bash
+# 최근 3개 커밋 편집
+git rebase -i HEAD~3
+```
+
+### 🎮 편집 옵션들
+
+```bash
+# 에디터가 열리면 이런 화면이 나타남:
+
+pick abc1234 첫 번째 커밋
+pick def5678 두 번째 커밋
+pick ghi9012 세 번째 커밋
+
+# 명령어를 수정:
+# p, pick   = 커밋 유지
+# r, reword = 커밋 메시지 수정
+# e, edit   = 커밋 수정
+# s, squash = 이전 커밋과 합치기
+# f, fixup  = squash와 같지만 메시지 버림
+# d, drop   = 커밋 삭제
+```
+
+### 📊 예시: 커밋 합치기 (Squash)
+
+```mermaid
+flowchart LR
+    subgraph Before ["전"]
+        A["WIP: 작업중"] --> B["타이핑 수정"] --> C["버그 고침"]
+    end
+    
+    subgraph After ["후"]
+        D["✨ 로그인 기능 완성"]
+    end
+    
+    Before -->|"📦 squash"| After
+    
+    style D fill:#c8e6c9
+```
+
+```bash
+# 3개 커밋을 1개로 합치기
+git rebase -i HEAD~3
+
+# 에디터에서:
+pick abc1234 첫 번째 커밋
+squash def5678 두 번째 커밋     # s로 변경
+squash ghi9012 세 번째 커밋     # s로 변경
+
+# 저장 후 새 커밋 메시지 작성
+```
+
+---
+
+## ⏰ Git Reflog - 실수 복구
+
+> [!IMPORTANT]
+> **Reflog** = Git의 블랙박스! 모든 HEAD 이동 기록을 저장
+
+```
+🎮 게임으로 비유:
+
+   실수로 reset --hard 해버렸다! 😱
+   커밋이 다 날아갔어...
+   
+   → reflog로 시간여행 가능! ⏰
+```
+
+### 🔍 Reflog 확인
+
+```bash
+git reflog
+```
+
+```
+📤 출력 예시:
+
+a1b2c3d HEAD@{0}: reset: moving to HEAD~3
+e4f5g6h HEAD@{1}: commit: 중요한 커밋!
+i7j8k9l HEAD@{2}: commit: 이전 커밋
+k0l1m2n HEAD@{3}: checkout: moving from feature to main
+```
+
+### 🛠️ 삭제된 커밋 복구
+
+```bash
+# reflog에서 복구하고 싶은 시점 찾기
+git reflog
+
+# 해당 시점으로 복구
+git reset --hard HEAD@{1}
+
+# 또는 새 브랜치로 복구
+git checkout -b recovered-branch HEAD@{1}
+```
+
+```
+🎉 복구 완료!
+
+   삭제된 줄 알았던 커밋들이
+   reflog 덕분에 다시 살아났습니다!
+```
+
+> [!WARNING]
+> Reflog는 로컬에만 존재합니다. 기본 90일 후 삭제됩니다!
+
+---
+
+## 🔍 Git Bisect - 버그 찾기
+
+> [!TIP]
+> **Bisect** = 이진 검색으로 버그 발생 커밋 찾기!
+
+```mermaid
+flowchart LR
+    A["✅ 정상"] --> B["❓"] --> C["❓"] --> D["❓"] --> E["❌ 버그"]
+    
+    B -.->|"이진 검색"| C
+    C -.->|"범인 발견!"| F["🐛 버그 커밋"]
+    
+    style A fill:#c8e6c9
+    style E fill:#ffcdd2
+    style F fill:#ffcdd2
+```
+
+### 🎮 사용법
+
+```bash
+# 1. bisect 시작
+git bisect start
+
+# 2. 현재(버그 있음)를 bad으로 표시
+git bisect bad
+
+# 3. 정상 작동했던 커밋을 good으로 표시
+git bisect good abc1234
+
+# 4. Git이 자동으로 중간 커밋으로 이동
+#    테스트 후 good/bad 판단
+git bisect good  # 또는
+git bisect bad
+
+# 5. 반복하면 버그 커밋 발견!
+
+# 6. bisect 종료
+git bisect reset
+```
+
+### 🤖 자동화 (Bisect Run)
+
+```bash
+# 테스트 스크립트로 자동 검색
+git bisect start HEAD abc1234
+git bisect run npm test
+
+# 테스트가 실패하는 커밋을 자동으로 찾아줌!
+```
+
+---
+
+## 🪝 Git Hooks - 자동화
+
+> [!TIP]
+> **Hooks** = Git 이벤트 발생 시 자동 실행되는 스크립트
+
+### 📂 Hooks 위치
+
+```
+.git/hooks/
+├── pre-commit         # 커밋 전에 실행
+├── commit-msg         # 커밋 메시지 검사
+├── pre-push           # 푸시 전에 실행
+├── post-merge         # 병합 후 실행
+└── post-checkout      # 체크아웃 후 실행
+```
+
+### 📝 예시: pre-commit hook
+
+```bash
+# .git/hooks/pre-commit 파일 생성
+#!/bin/sh
+
+# 린트 검사
+echo "🔍 린트 검사 중..."
+npm run lint
+
+# 린트 실패 시 커밋 중단
+if [ $? -ne 0 ]; then
+    echo "❌ 린트 오류! 커밋이 취소되었습니다."
+    exit 1
+fi
+
+echo "✅ 린트 통과!"
+```
+
+```bash
+# 실행 권한 부여
+chmod +x .git/hooks/pre-commit
+```
+
+### 📦 Husky (쉽게 Hook 관리)
+
+```bash
+# Husky 설치
+npm install husky --save-dev
+npx husky install
+
+# pre-commit hook 추가
+npx husky add .husky/pre-commit "npm test"
+```
+
+---
+
+## 📦 Git Submodule
+
+> [!TIP]
+> **Submodule** = 프로젝트 안에 다른 Git 프로젝트 포함
+
+### 🎮 사용 예시
+
+```
+내 프로젝트/
+├── src/
+├── libs/
+│   └── shared-utils/  ← 📦 다른 Git 저장소 (submodule)
+└── README.md
+```
+
+### 🛠️ 기본 명령어
+
+```bash
+# Submodule 추가
+git submodule add https://github.com/user/repo.git libs/shared-utils
+
+# Submodule 포함해서 Clone
+git clone --recurse-submodules https://github.com/user/main-project.git
+
+# 이미 Clone한 후 Submodule 가져오기
+git submodule init
+git submodule update
+
+# 모든 Submodule 업데이트
+git submodule update --remote
+
+# Submodule 삭제
+git submodule deinit libs/shared-utils
+git rm libs/shared-utils
+```
+
+### ⚠️ 주의사항
+
+```
+💡 Submodule은 특정 커밋을 가리킵니다!
+   
+   업데이트 후 반드시 커밋해야 합니다:
+   
+   cd libs/shared-utils
+   git pull origin main
+   cd ../..
+   git add libs/shared-utils
+   git commit -m "📦 submodule 업데이트"
 ```
 
 ### 🍒 Cherry-pick
@@ -1080,7 +1530,124 @@ Rebase 후:
 
 ---
 
+## 🔀 Merge 전략
+
+> [!TIP]
+> 상황에 따라 다른 Merge 전략을 사용하세요!
+
+### 📊 Merge 종류 비교
+
+```mermaid
+flowchart TD
+    A["브랜치 병합"] --> B{"Merge 전략 선택"}
+    B --> C["Regular Merge"]
+    B --> D["Squash Merge"]
+    B --> E["Fast-forward"]
+    B --> F["Rebase"]
+    
+    C --> C1["모든 커밋 유지 + merge commit"]
+    D --> D1["모든 커밋을 1개로 합침"]
+    E --> E1["일직선 히스토리"]
+    F --> F1["깔끔한 일직선"]
+    
+    style C fill:#e3f2fd
+    style D fill:#fff3e0
+    style E fill:#e8f5e9
+    style F fill:#fce4ec
+```
+
+<table>
+<tr>
+<td width="50%">
+
+### 🔄 Regular Merge
+```bash
+git merge feature/login
+```
+
+```
+      A---B---C  feature
+     /         \
+D---E-----------F  main (merge commit)
+```
+
+✅ 모든 히스토리 보존
+❌ merge commit 생성
+
+</td>
+<td width="50%">
+
+### 📦 Squash Merge
+```bash
+git merge --squash feature/login
+git commit -m "기능 완성"
+```
+
+```
+      A---B---C  feature
+     /
+D---E-----------S  main (squashed)
+```
+
+✅ 깔끔한 1개 커밋
+❌ 세부 히스토리 손실
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### ⚡ Fast-forward Merge
+```bash
+git merge --ff-only feature/login
+```
+
+```
+D---E---A---B---C  main (fast-forwarded)
+```
+
+✅ 가장 깔끔한 히스토리
+❌ 브랜치 기록 없음
+
+</td>
+<td width="50%">
+
+### 📜 No Fast-forward
+```bash
+git merge --no-ff feature/login
+```
+
+```
+      A---B---C  feature
+     /         \
+D---E-----------F  main
+```
+
+✅ 브랜치 기록 보존
+✅ 명시적인 merge commit
+
+</td>
+</tr>
+</table>
+
+### 🎯 언제 어떤 전략을?
+
+| 상황 | 추천 전략 |
+|:---|:---|
+| 기능 브랜치 히스토리 보존 필요 | `--no-ff` |
+| PR의 여러 커밋을 하나로 | `--squash` |
+| 간단한 hotfix | `--ff-only` |
+| 기본 협업 | Regular merge |
+
+---
+
 ## 💡 유용한 팁들
+
+<div align="center">
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Light%20Bulb.png" alt="Light Bulb" width="50" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Hammer%20and%20Wrench.png" alt="Tools" width="60" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Gem%20Stone.png" alt="Gem" width="50" />
+</div>
 
 ### 📋 자주 쓰는 명령어 별칭 (Alias)
 
@@ -1337,6 +1904,64 @@ journey
 
 ---
 
+## 🎆 학습 완료 축하합니다!
+
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Fireworks.png" alt="Fireworks" width="80" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Sparkler.png" alt="Sparkler" width="80" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Fireworks.png" alt="Fireworks" width="80" />
+
+### 🎉🎊 축하합니다! 🎊🎉
+
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Party%20Popper.png" alt="Party Popper" width="100" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Confetti%20Ball.png" alt="Confetti Ball" width="100" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Party%20Popper.png" alt="Party Popper" width="100" />
+
+```
+                                   🌟
+                              🌟    ✨    🌟
+                         🌟              🌟
+                    ✨         🎆 🎇         ✨
+               🌟        🎇 🎉🎊🎉 🎆        🌟
+          🌟         🎆   🎊     🎊   🎇         ✨
+               ✨      🎇  🎉 🌟 🎉  🎆      🌟
+                    🌟    🎆 🎊 🎇    ✨
+                         ✨   🌟   🌟
+                              🌟
+                                   ✨
+```
+
+### 🏆 Git 학습을 완료하셨네요!
+
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Clapping%20Hands.png" alt="Clapping Hands" width="80" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Trophy.png" alt="Trophy" width="100" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Clapping%20Hands.png" alt="Clapping Hands" width="80" />
+
+**이제 당신은 Git 마스터입니다!**
+
+```
+████████████████████ 100% 초급 완료! ✅
+████████████████████ 100% 중급 완료! ✅
+████████████████████ 100% 고급 완료! ✅
+```
+
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Glowing%20Star.png" alt="Star" width="30" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Glowing%20Star.png" alt="Star" width="40" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Glowing%20Star.png" alt="Star" width="50" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Glowing%20Star.png" alt="Star" width="40" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Glowing%20Star.png" alt="Star" width="30" />
+
+<br>
+
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Face%20with%20Party%20Horn%20and%20Party%20Hat.png" alt="Party Face" width="80" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Partying%20Face.png" alt="Partying" width="80" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Face%20with%20Party%20Horn%20and%20Party%20Hat.png" alt="Party Face" width="80" />
+
+</div>
+
+---
+
 ## 📚 더 배우기
 
 <table>
@@ -1419,7 +2044,19 @@ journey
 
 ---
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer" width="100%">
+### 🎆 감사합니다!
+
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Sparkling%20Heart.png" alt="Heart" width="30" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Star-Struck.png" alt="Star Struck" width="40" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Sparkles.png" alt="Sparkles" width="40" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Star-Struck.png" alt="Star Struck" width="40" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Sparkling%20Heart.png" alt="Heart" width="30" />
+
+```
+✨ 함께 성장하는 개발자가 되세요! ✨
+```
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=120&section=footer&animation=twinkling" width="100%">
 
 **Made with ❤️ for Git beginners**
 
