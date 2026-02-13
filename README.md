@@ -1,1421 +1,1565 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=180&section=header&text=Git%20완벽%20가이드&fontSize=42&fontColor=fff&animation=twinkling&fontAlignY=32&desc=A부터%20Z까지%20초보자를%20위한%20Git%20튜토리얼&descSize=18&descAlignY=52" width="100%" />
+<img src="https://capsule-render.vercel.app/api?type=cylinder&color=0:F05032,50:DE4C36,100:B8321A&height=230&section=header&text=Git%20%E2%80%94%20The%20Definitive%20Guide&fontSize=44&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=%ED%98%84%EC%97%85%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EA%B0%80%20%EC%95%8C%EB%A0%A4%EC%A3%BC%EB%8A%94%2C%20%EC%A7%84%EC%A7%9C%20%EC%93%B0%EB%8A%94%20Git&descSize=18&descAlignY=58" width="100%" />
 
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Rocket.png" alt="Rocket" width="80" />
-
-<a href="https://git-scm.com">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=F05032&center=true&vCenter=true&multiline=true&repeat=true&width=500&height=80&lines=Welcome+to+Git+World!+%F0%9F%8C%8D;%EB%B2%84%EC%A0%84+%EA%B4%80%EB%A6%AC%EC%9D%98+%EB%AA%A8%EB%93%A0+%EA%B2%83+%F0%9F%93%9A" alt="Typing SVG" />
-</a>
+<br>
 
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
-![Version](https://img.shields.io/badge/Version-2.0.0-blue?style=for-the-badge)
-![Korean](https://img.shields.io/badge/한국어-🇰🇷-red?style=for-the-badge)
+![GitLab](https://img.shields.io/badge/GitLab-FC6D26?style=for-the-badge&logo=gitlab&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Bookmark%20Tabs.png" alt="Bookmark" width="50" />
+**"외우지 마세요. 이해하세요."**
+<br>
+이 가이드는 명령어 나열이 아니라, **왜 그렇게 동작하는지**를 알려줍니다.
 
-**초보자도 쉽게 이해할 수 있는 Git 사용법 완전 정복!**
-
-[시작하기](#-git-설치하기) • [기본 명령어](#-기본-명령어) • [브랜치](#-브랜치-다루기) • [협업](#-협업하기)
-
----
-
-### 📊 학습 진행도
-
-```
-기초     ████████░░░░░░░░░░░░░░░░░░    초급
-중급     ░░░░░░░░░░░░░░░░░░░░░░░░░░    브랜치 & 협업
-고급     ░░░░░░░░░░░░░░░░░░░░░░░░░░    Rebase & 고급 기능
-```
-
-</div>
-
----
-
-## 📚 목차
-
-### 🌱 초급
-1. [Git이란 무엇인가?](#-git이란-무엇인가)
-2. [Git 설치하기](#-git-설치하기)
-3. [Git 초기 설정](#%EF%B8%8F-git-초기-설정)
-4. [저장소 만들기](#-저장소-만들기)
-5. [Git의 3가지 영역 이해하기](#-git의-3가지-영역-이해하기)
-6. [기본 명령어](#%EF%B8%8F-기본-명령어)
-
-### 🌿 중급
-7. [브랜치 다루기](#-브랜치-다루기)
-8. [원격 저장소 (GitHub)](#-원격-저장소-github)
-9. [협업하기](#-협업하기)
-10. [되돌리기](#-되돌리기)
-11. [Merge 전략](#-merge-전략)
-
-### 🚀 고급
-12. [고급 기능](#-고급-기능)
-13. [Interactive Rebase](#-interactive-rebase)
-14. [Git Reflog - 실수 복구](#-git-reflog---실수-복구)
-15. [Git Bisect - 버그 찾기](#-git-bisect---버그-찾기)
-16. [Git Hooks - 자동화](#-git-hooks---자동화)
-17. [Git Submodule](#-git-submodule)
-18. [유용한 팁들](#-유용한-팁들)
-
----
-
-## 🤔 Git이란 무엇인가?
-
-<div align="center">
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Floppy%20Disk.png" alt="Floppy" width="60" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Hourglass%20Done.png" alt="Hourglass" width="70" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Floppy%20Disk.png" alt="Floppy" width="60" />
-</div>
-
-### 📖 쉬운 설명
-
-Git은 **"파일의 변경 이력을 기록하고 관리하는 시스템"** 입니다.
-
-```
-🎮 게임으로 비유하면...
-
-   세이브 포인트 1    세이브 포인트 2    세이브 포인트 3
-        💾 ─────────────── 💾 ─────────────── 💾
-        │                  │                  │
-    "마을 도착"      "보스 앞 도착"      "보스 클리어"
-        
-    ↳ 언제든 이전 세이브 포인트로 돌아갈 수 있어요!
-```
-
-### ✨ Git을 사용하면 좋은 점
-
-<table>
-<tr>
-<td align="center" width="25%">
-
-### 🕐
-**시간 여행**
-
-언제든 과거 버전으로
-돌아갈 수 있어요
-
-</td>
-<td align="center" width="25%">
-
-### 👥
-**협업**
-
-여러 명이 동시에
-작업할 수 있어요
-
-</td>
-<td align="center" width="25%">
-
-### 🔒
-**백업**
-
-코드를 안전하게
-보관할 수 있어요
-
-</td>
-<td align="center" width="25%">
-
-### 🌿
-**실험**
-
-새로운 기능을 안전하게
-테스트할 수 있어요
-
-</td>
-</tr>
-</table>
-
-### 🎬 Git 없는 세상 vs Git 있는 세상
-
-| Git 없이 😱 | Git과 함께 😊 |
-|:---|:---|
-| `report_final.doc` | `git commit -m "보고서 초안"` |
-| `report_final_진짜.doc` | `git commit -m "보고서 수정"` |
-| `report_final_진짜_최종.doc` | `git commit -m "보고서 최종"` |
-| `report_final_진짜_최종_수정.doc` | `git log` 로 모든 버전 확인! |
-| 🤯 파일 20개... | 😎 파일 1개 + 히스토리 |
-
----
-
-## 💻 Git 설치하기
-
-> 💡 **Tip**: 자신의 운영체제에 맞는 탭을 확인하세요!
-
-<details>
-<summary>🪟 <b>Windows</b> (클릭해서 펼치기)</summary>
 <br>
 
-#### 설치 방법
-1. 🌐 [https://git-scm.com](https://git-scm.com) 접속
-2. 📥 "Download for Windows" 클릭
-3. ▶️ 설치 파일 실행 (기본 옵션으로 설치 OK!)
+[Part 1: 개념](#part-1--git의-세계관) · [Part 2: 실전](#part-2--매일-쓰는-git) · [Part 3: 브랜치](#part-3--브랜치-전략) · [Part 4: 협업](#part-4--팀과-함께-쓰는-git) · [Part 5: 고급](#part-5--프로처럼-쓰는-git) · [Part 6: 트러블슈팅](#part-6--트러블슈팅)
+
+</div>
+
+---
+
+# 목차
+
+### Part 1 — 개념
+- [Ch 1. Git은 스냅샷이다](#ch-1-git은-스냅샷이다)
+- [Ch 2. Git의 내부 구조](#ch-2-git의-내부-구조)
+- [Ch 3. 세 개의 영역과 파일의 생명주기](#ch-3-세-개의-영역과-파일의-생명주기)
+
+### Part 2 — 실전
+- [Ch 4. 설치와 초기 설정](#ch-4-설치와-초기-설정)
+- [Ch 5. 저장소 만들기](#ch-5-저장소-만들기)
+- [Ch 6. 일상적인 워크플로우](#ch-6-일상적인-워크플로우)
+- [Ch 7. 히스토리 읽기](#ch-7-히스토리-읽기)
+- [Ch 8. 커밋 메시지 컨벤션](#ch-8-커밋-메시지-컨벤션)
+
+### Part 3 — 브랜치
+- [Ch 9. 브랜치의 본질](#ch-9-브랜치의-본질)
+- [Ch 10. Merge의 모든 것](#ch-10-merge의-모든-것)
+- [Ch 11. Rebase — 히스토리 다시 쓰기](#ch-11-rebase--히스토리-다시-쓰기)
+- [Ch 12. 충돌 해결 완전 정복](#ch-12-충돌-해결-완전-정복)
+
+### Part 4 — 협업
+- [Ch 13. 원격 저장소 이해하기](#ch-13-원격-저장소-이해하기)
+- [Ch 14. Push, Pull, Fetch의 관계](#ch-14-push-pull-fetch의-관계)
+- [Ch 15. Pull Request 워크플로우](#ch-15-pull-request-워크플로우)
+- [Ch 16. 브랜치 전략: Git Flow vs Trunk-Based](#ch-16-브랜치-전략-git-flow-vs-trunk-based)
+
+### Part 5 — 프로처럼
+- [Ch 17. 되돌리기 총정리](#ch-17-되돌리기-총정리)
+- [Ch 18. Stash — 작업 임시 보관](#ch-18-stash--작업-임시-보관)
+- [Ch 19. Interactive Rebase](#ch-19-interactive-rebase)
+- [Ch 20. Cherry-pick, Bisect, Reflog](#ch-20-cherry-pick-bisect-reflog)
+- [Ch 21. Git Hooks & 자동화](#ch-21-git-hooks--자동화)
+- [Ch 22. Submodule과 Subtree](#ch-22-submodule과-subtree)
+- [Ch 23. Worktree](#ch-23-worktree)
+
+### Part 6 — 트러블슈팅
+- [Ch 24. 자주 겪는 실수와 해결법](#ch-24-자주-겪는-실수와-해결법)
+- [Ch 25. .gitignore 완전 가이드](#ch-25-gitignore-완전-가이드)
+- [Ch 26. 성능 최적화](#ch-26-성능-최적화)
+
+### 부록
+- [Appendix A: 명령어 치트시트](#appendix-a-명령어-치트시트)
+- [Appendix B: Alias 추천 설정](#appendix-b-alias-추천-설정)
+- [Appendix C: 추천 학습 자료](#appendix-c-추천-학습-자료)
+
+---
+
+<br>
+
+# Part 1 — Git의 세계관
+
+대부분의 Git 가이드는 `git add`, `git commit`부터 시작합니다.
+하지만 **개념을 먼저 잡지 않으면**, 명령어를 외워도 응용할 수 없습니다.
+
+---
+
+## Ch 1. Git은 스냅샷이다
+
+### 흔한 오해: "Git은 변경사항(diff)을 저장한다"
+
+**아닙니다.** Git은 매 커밋마다 **프로젝트 전체의 스냅샷**을 저장합니다.
+
+```
+❌ 잘못된 이해 (diff 기반):
+
+  커밋 1 → 커밋 2 → 커밋 3
+   [원본]   [+3줄]   [-1줄]
+
+  "변경사항을 순서대로 쌓아가는 것"
+```
+
+```
+✅ 올바른 이해 (스냅샷 기반):
+
+  커밋 1        커밋 2        커밋 3
+  ┌────────┐   ┌────────┐   ┌────────┐
+  │ 파일 A │   │ 파일 A'│   │ 파일 A'│ ← 변경 없으면 이전 참조
+  │ 파일 B │   │ 파일 B │   │ 파일 B'│
+  │ 파일 C │   │ 파일 C'│   │ 파일 C'│
+  └────────┘   └────────┘   └────────┘
+
+  "매 커밋은 그 시점의 전체 프로젝트 상태"
+```
+
+> [!NOTE]
+> 변경되지 않은 파일은 새로 저장하지 않고 이전 스냅샷의 참조만 유지합니다.
+> 그래서 용량 걱정 없이 커밋을 자주 해도 됩니다.
+
+### 왜 이게 중요한가?
+
+이 구조 덕분에 Git은 다음을 할 수 있습니다:
+
+| 능력 | 설명 |
+|:---|:---|
+| **즉시 브랜치 전환** | 스냅샷 간 이동이므로 diff를 재적용할 필요 없음 |
+| **빠른 diff 계산** | 두 스냅샷을 비교하면 끝 |
+| **안전한 병합** | 각 브랜치가 완전한 상태를 보유 |
+| **오프라인 작업** | 로컬에 모든 히스토리가 있음 |
+
+---
+
+## Ch 2. Git의 내부 구조
+
+> [!TIP]
+> `.git/` 폴더 안에 Git의 모든 마법이 들어있습니다.
+
+### .git 디렉토리 해부
+
+```
+.git/
+├── HEAD            ← 현재 어떤 브랜치에 있는지
+├── config          ← 이 저장소의 설정
+├── index           ← Staging Area (바이너리)
+├── objects/        ← 모든 데이터 (blob, tree, commit)
+│   ├── pack/       ← 압축된 객체들
+│   └── info/
+├── refs/           ← 브랜치와 태그 포인터
+│   ├── heads/      ← 로컬 브랜치
+│   ├── remotes/    ← 원격 브랜치
+│   └── tags/       ← 태그
+└── hooks/          ← Git Hook 스크립트
+```
+
+### Git의 4가지 객체
+
+Git 내부에는 딱 **4종류**의 객체만 존재합니다.
+
+```mermaid
+flowchart TD
+    C["📌 Commit\n커밋 메시지, 작성자, 시간\n+ Tree 포인터\n+ 부모 Commit 포인터"]
+    T["📂 Tree\n디렉토리 구조\n파일명 → Blob 매핑"]
+    B["📄 Blob\n파일 내용 그 자체\n(파일명 없음, 순수 데이터)"]
+    TG["🏷️ Tag\n특정 Commit에 붙이는 이름표"]
+
+    C --> T
+    T --> B
+    T --> T
+    TG --> C
+
+    style C fill:#e3f2fd,stroke:#1565c0
+    style T fill:#fff3e0,stroke:#ef6c00
+    style B fill:#e8f5e9,stroke:#2e7d32
+    style TG fill:#fce4ec,stroke:#c62828
+```
+
+모든 객체는 **SHA-1 해시**(40자리 16진수)로 식별됩니다.
 
 ```bash
-# 설치 후 Git Bash 또는 PowerShell에서 확인
-git --version
+# 커밋 객체 내용 확인
+git cat-file -p HEAD
+
+# 출력 예시:
+# tree 4b825dc642cb6eb9a060e54bf899d15363cf7c4e
+# parent 8a7b3f2e1d...
+# author 홍길동 <hong@mail.com> 1700000000 +0900
+# committer 홍길동 <hong@mail.com> 1700000000 +0900
+#
+# ✨ feat: 로그인 기능 추가
 ```
+
+> [!NOTE]
+> 이 구조를 알면 `git reset`, `git rebase` 같은 명령어가 **실제로 무엇을 하는지** 이해할 수 있습니다.
+> 브랜치는 그냥 특정 커밋을 가리키는 포인터일 뿐이고, HEAD는 현재 브랜치를 가리키는 포인터입니다.
+
+---
+
+## Ch 3. 세 개의 영역과 파일의 생명주기
+
+### 세 영역
+
+```
+┌───────────────────────────────────────────────────────────────┐
+│                                                               │
+│  Working Directory        Staging Area         Repository     │
+│  (작업 디렉토리)            (인덱스)              (.git)        │
+│                                                               │
+│  ┌─────────────┐        ┌─────────────┐     ┌──────────────┐ │
+│  │             │ ─add─→ │             │ ─c→ │              │ │
+│  │  파일 수정   │        │  커밋 준비    │     │  영구 기록    │ │
+│  │             │ ←────  │             │     │              │ │
+│  └─────────────┘        └─────────────┘     └──────────────┘ │
+│                                                               │
+│  실제 파일이 있는 곳       "다음 커밋에 포함할       커밋된 스냅샷   │
+│                           파일 목록"              히스토리       │
+│                                                               │
+└───────────────────────────────────────────────────────────────┘
+```
+
+> [!IMPORTANT]
+> Staging Area가 존재하는 이유:
+> **커밋 단위를 내가 직접 설계**할 수 있기 때문입니다.
+> 10개 파일을 수정했어도, 관련 있는 3개만 골라서 하나의 커밋으로 만들 수 있습니다.
+> 이것이 SVN, Dropbox와 Git의 결정적 차이입니다.
+
+### 파일의 생명주기
+
+```mermaid
+stateDiagram-v2
+    [*] --> Untracked : 새 파일 생성
+    Untracked --> Staged : git add
+    Staged --> Committed : git commit
+    Committed --> Modified : 파일 수정
+    Modified --> Staged : git add
+    Staged --> Modified : 파일 다시 수정
+    Committed --> Untracked : git rm
+```
+
+| 상태 | `git status`에서 보이는 모습 | 의미 |
+|:---|:---|:---|
+| **Untracked** | 빨간색, "Untracked files" | Git이 전혀 모르는 새 파일 |
+| **Modified** | 빨간색, "Changes not staged" | 추적 중인 파일이 수정됨 |
+| **Staged** | 녹색, "Changes to be committed" | 다음 커밋에 포함될 예정 |
+| **Committed** | 표시 안 됨 | 안전하게 저장 완료 |
+
+---
+
+<br>
+
+# Part 2 — 매일 쓰는 Git
+
+---
+
+## Ch 4. 설치와 초기 설정
+
+### 설치
+
+<details>
+<summary><b>Windows</b></summary>
+
+[git-scm.com](https://git-scm.com)에서 설치 파일을 다운로드하여 실행합니다.
+설치 옵션은 기본값 그대로 진행해도 무방합니다.
+설치 후 Git Bash 또는 PowerShell에서 `git --version`으로 확인합니다.
 
 </details>
 
 <details>
-<summary>🍎 <b>macOS</b> (클릭해서 펼치기)</summary>
-<br>
+<summary><b>macOS</b></summary>
 
-#### 방법 1: Homebrew 사용 (권장)
 ```bash
+# Homebrew (권장)
 brew install git
-```
 
-#### 방법 2: Xcode Command Line Tools
-```bash
+# 또는 Xcode CLT
 xcode-select --install
 ```
 
 </details>
 
 <details>
-<summary>🐧 <b>Linux</b> (클릭해서 펼치기)</summary>
-<br>
+<summary><b>Linux (Ubuntu/Debian)</b></summary>
 
-#### Ubuntu/Debian
 ```bash
-sudo apt-get update
-sudo apt-get install git
-```
-
-#### Fedora
-```bash
-sudo dnf install git
-```
-
-#### Arch Linux
-```bash
-sudo pacman -S git
+sudo apt update && sudo apt install git
 ```
 
 </details>
 
-### ✅ 설치 확인
+### 필수 초기 설정
 
 ```bash
-git --version
-```
-
-```
-📤 출력 예시:
-git version 2.42.0
-```
-
----
-
-## ⚙️ Git 초기 설정
-
-Git을 처음 사용한다면, **반드시** 사용자 정보를 설정해야 해요!
-
-### 👤 사용자 정보 설정
-
-```bash
-# 이름 설정 (커밋에 표시될 이름)
+# ── 신원 등록 (모든 커밋에 기록됨) ──
 git config --global user.name "홍길동"
+git config --global user.email "hong@example.com"
 
-# 이메일 설정 (GitHub 계정 이메일과 동일하게!)
-git config --global user.email "gildong@example.com"
-```
-
-### 🔍 설정 확인
-
-```bash
-git config --list
-```
-
-```
-📤 출력 예시:
-user.name=홍길동
-user.email=gildong@example.com
-```
-
-### 🎨 추가 유용한 설정
-
-```bash
-# 기본 브랜치 이름을 'main'으로 설정
+# ── 기본 브랜치 이름 ──
 git config --global init.defaultBranch main
 
-# 출력을 컬러풀하게!
-git config --global color.ui auto
+# ── 줄바꿈 처리 (협업 시 중요) ──
+# Windows
+git config --global core.autocrlf true
+# macOS / Linux
+git config --global core.autocrlf input
 
-# 기본 에디터 설정 (VS Code)
-git config --global core.editor "code --wait"
+# ── 기본 에디터 ──
+git config --global core.editor "code --wait"   # VS Code
+# git config --global core.editor "vim"          # Vim
+# git config --global core.editor "nano"         # Nano
 ```
+
+### 설정 확인
+
+```bash
+git config --list --show-origin
+# 어떤 설정 파일에서 어떤 값이 적용되는지 한눈에 확인
+```
+
+> [!TIP]
+> Git 설정은 3단계 우선순위가 있습니다.
+> `--system` (시스템 전체) < `--global` (사용자) < `--local` (저장소)
+> 같은 키가 여러 레벨에 있으면 **가장 좁은 범위가 우선**합니다.
 
 ---
 
-## 📁 저장소 만들기
+## Ch 5. 저장소 만들기
 
-<div align="center">
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Card%20File%20Box.png" alt="File Box" width="50" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/File%20Folder.png" alt="Folder" width="60" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Open%20File%20Folder.png" alt="Open Folder" width="60" />
-</div>
-
-### 🆕 새 저장소 만들기 (git init)
+### 방법 1: 새로 만들기
 
 ```bash
-# 1. 프로젝트 폴더 생성
-mkdir my-project
-cd my-project
-
-# 2. Git 저장소로 초기화
+mkdir my-project && cd my-project
 git init
 ```
 
-```
-📤 결과:
-Initialized empty Git repository in /my-project/.git/
+이 순간 `.git/` 디렉토리가 생성되며, 이 폴더가 Git 저장소가 됩니다.
+아직 커밋은 없는 상태입니다.
 
-📂 폴더 구조:
-my-project/
-    └── .git/  ← 🔮 Git의 마법이 담긴 숨겨진 폴더!
-```
-
-### 📥 기존 저장소 복제하기 (git clone)
+### 방법 2: 기존 프로젝트 복제
 
 ```bash
-# GitHub의 프로젝트를 내 컴퓨터로 복사
-git clone https://github.com/username/repository.git
+# 기본
+git clone https://github.com/user/repo.git
+
+# 폴더 이름 지정
+git clone https://github.com/user/repo.git my-folder
+
+# 최신 커밋 1개만 (대규모 저장소에서 빠르게 받기)
+git clone --depth 1 https://github.com/user/repo.git
+
+# 특정 브랜치만
+git clone -b develop --single-branch https://github.com/user/repo.git
 ```
 
-```
-🎯 Tip: 
-   git clone은 전체 히스토리를 포함해서 가져와요!
-   └── 모든 커밋 기록
-   └── 모든 브랜치
-   └── 모든 태그
-```
-
-### 🎛️ git clone 유용한 옵션들
-
-```bash
-# 특정 브랜치만 클론
-git clone -b develop https://github.com/username/repo.git
-
-# 폴더 이름 지정해서 클론
-git clone https://github.com/username/repo.git my-folder
-
-# 최신 커밋만 가져오기 (얕은 클론 - 빠름!)
-git clone --depth 1 https://github.com/username/repo.git
-
-# 특정 태그로 클론
-git clone --branch v1.0.0 https://github.com/username/repo.git
-```
+> [!NOTE]
+> `git clone`은 `git init` + `git remote add` + `git fetch` + `git checkout`을 한 번에 수행합니다.
 
 ---
 
-## 🎯 Git의 3가지 영역 이해하기
+## Ch 6. 일상적인 워크플로우
 
-<div align="center">
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Bullseye.png" alt="Bullseye" width="70" />
-</div>
-
-> [!IMPORTANT]
-> 💡 **이것만 이해하면 Git의 80%는 끝!**
-
-```mermaid
-flowchart LR
-    A["📂 Working Directory\n(작업 디렉토리)"] -->|git add| B["📦 Staging Area\n(스테이징 영역)"]
-    B -->|git commit| C["📚 Repository\n(저장소)"]
-    
-    style A fill:#ffebee,stroke:#c62828
-    style B fill:#fff3e0,stroke:#ef6c00
-    style C fill:#e8f5e9,stroke:#2e7d32
-```
-
-<table>
-<tr>
-<td align="center" width="33%">
-
-### 📂 Working Directory
-**작업 디렉토리**
+매일 반복하는 핵심 사이클입니다.
 
 ```
-파일을 수정하는 곳
-✏️ 코드 작성 중...
+ ┌──────────────────────────────────────────────────────────┐
+ │  코드 작성 → git add → git commit → (반복) → git push   │
+ └──────────────────────────────────────────────────────────┘
 ```
 
-</td>
-<td align="center" width="33%">
-
-### 📦 Staging Area
-**스테이징 영역**
-
-```
-커밋할 파일을 준비
-📋 대기열에 추가!
-```
-
-</td>
-<td align="center" width="33%">
-
-### 📚 Repository
-**저장소**
-
-```
-변경 이력이 저장
-💾 영구 보관!
-```
-
-</td>
-</tr>
-<tr>
-<td align="center">⬇️</td>
-<td align="center">⬇️</td>
-<td align="center">⬇️</td>
-</tr>
-<tr>
-<td align="center"><code>파일 수정</code></td>
-<td align="center"><code>git add</code></td>
-<td align="center"><code>git commit</code></td>
-</tr>
-</table>
-
-### 🍕 피자 만들기로 비유하면...
-
-```
-🏠 주방 (Working Directory)
-   │
-   │  피자 반죽을 만들고 토핑을 올려요
-   │
-   ↓ [git add] "이 피자 굽기로 했어요!"
-   
-🍳 오븐 앞 대기 (Staging Area)
-   │
-   │  구울 피자들이 줄 서서 대기 중
-   │
-   ↓ [git commit] "피자 완성!"
-   
-📸 완성된 피자 사진첩 (Repository)
-   
-   모든 피자의 기록이 남아있어요!
-   → 언제든 다시 같은 피자를 만들 수 있어요!
-```
-
----
-
-## 🛠️ 기본 명령어
-
-<div align="center">
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Laptop.png" alt="Laptop" width="60" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Keyboard.png" alt="Keyboard" width="60" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Desktop%20Computer.png" alt="Desktop" width="60" />
-</div>
-
-### 📊 상태 확인 (git status)
+### 1단계: 상태 확인
 
 ```bash
 git status
+
+# 짧은 버전
+git status -s
 ```
 
+`git status -s`의 출력 형식:
+
 ```
-📤 출력 예시:
-
-On branch main
-
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-        
-        🔴 modified:   README.md      ← 수정되었지만 아직 add 안 함
-
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-        
-        🟡 new-file.txt               ← 새 파일 (Git이 아직 추적 안 함)
+ M README.md       ← 수정됨 (Unstaged)
+M  app.js          ← 수정됨 (Staged)
+MM server.js       ← Staged 후 다시 수정됨
+?? new-file.txt    ← Untracked
+A  added.txt       ← 새로 추가됨 (Staged)
+D  deleted.txt     ← 삭제됨
+R  old.txt → new.txt ← 이름 변경됨
 ```
 
-### ➕ 스테이지에 추가 (git add)
+> [!TIP]
+> 왼쪽 열은 Staging Area 상태, 오른쪽 열은 Working Directory 상태입니다.
+
+### 2단계: Staging
 
 ```bash
-# 특정 파일 추가
+# 특정 파일
 git add README.md
 
-# 여러 파일 추가
-git add file1.txt file2.txt
-
-# 현재 폴더의 모든 변경사항 추가 ⭐ 가장 많이 씀!
+# 현재 디렉토리 전체
 git add .
 
-# 특정 확장자만 추가
-git add *.js
+# 패턴
+git add "*.js"
+git add src/
+
+# 대화형 — 파일 내 특정 부분만 선택적으로 Stage
+git add -p
 ```
 
-```
-📊 상태 변화:
+**`git add -p`는 실무에서 매우 유용합니다.** 하나의 파일 안에서도 변경 단위(hunk)를 골라 Stage할 수 있습니다.
 
-BEFORE (git add 전)              AFTER (git add 후)
-━━━━━━━━━━━━━━━━━━              ━━━━━━━━━━━━━━━━━
-🔴 modified: README.md    →    🟢 modified: README.md
-   (빨간색 = Unstaged)            (녹색 = Staged)
+```
+@@ -10,6 +10,8 @@ function login() {
++  validate(email);        ← 이 변경은 Stage 하고
++  logAttempt(email);      ← 이 변경은 나중에 커밋하고 싶을 때
+
+Stage this hunk [y,n,q,a,d,s,e,?]?
 ```
 
-### 💾 커밋하기 (git commit)
+| 키 | 의미 |
+|:---:|:---|
+| `y` | 이 hunk를 Stage |
+| `n` | 건너뜀 |
+| `s` | 더 작은 단위로 분할 |
+| `e` | 직접 편집 |
+| `q` | 종료 |
+
+### 3단계: Commit
 
 ```bash
-# 기본 커밋
-git commit -m "커밋 메시지를 여기에 작성"
+git commit -m "메시지"
 
-# add + commit 한 번에! (새 파일은 안 됨, 수정된 파일만)
+# 에디터에서 긴 메시지 작성
+git commit
+
+# Tracked 파일의 수정사항을 add 없이 바로 커밋
 git commit -am "메시지"
 ```
 
-### 📝 좋은 커밋 메시지 작성법
+> [!WARNING]
+> `git commit -am`은 **Untracked 파일(새 파일)**은 포함하지 않습니다.
+> 새 파일이 있다면 반드시 `git add`를 먼저 해야 합니다.
 
-> [!NOTE]
-> 커밋 메시지는 **미래의 나**와 **팀원**을 위한 것입니다!
-
-<table>
-<tr>
-<td width="50%">
-
-#### ✅ 좋은 예시
-
-| 이모지 | 타입 | 설명 |
-|:---:|:---|:---|
-| ✨ | `feat` | 새 기능 추가 |
-| 🐛 | `fix` | 버그 수정 |
-| 📝 | `docs` | 문서 수정 |
-| 🎨 | `style` | 코드 포맷팅 |
-| ♻️ | `refactor` | 코드 리팩토링 |
-| 🧪 | `test` | 테스트 추가 |
-| 🚀 | `deploy` | 배포 |
-| 🔧 | `config` | 설정 변경 |
-
-</td>
-<td width="50%">
-
-#### ❌ 나쁜 예시
-
-```diff
-- 수정함
-- fix
-- ㅇㅇ  
-- asdf
-- update
-- 1
-```
-
-> 🤔 나중에 이게 뭔지 아무도 모릅니다...
-
-</td>
-</tr>
-</table>
-
-#### 💡 커밋 메시지 템플릿
-
-```
-<타입>(<범위>): <제목>
-
-<본문> (선택사항)
-
-<꼬리말> (선택사항)
-```
-
-**예시:**
-```
-✨ feat(auth): 소셜 로그인 기능 추가
-
-- Google OAuth 2.0 연동
-- 로그인 성공 시 토큰 저장
-- 자동 로그인 기능 구현
-
-Closes #123
-```
-
-### 📜 커밋 기록 보기 (git log)
+### 4단계: 변경 내용 비교
 
 ```bash
-# 기본 로그
-git log
-
-# 한 줄로 보기 ⭐
-git log --oneline
-
-# 그래프로 보기 (브랜치 시각화)
-git log --oneline --graph --all
-
-# 최근 5개만 보기
-git log -5
-
-# 특정 파일의 로그만 보기
-git log -- README.md
-
-# 특정 작성자의 커밋만
-git log --author="홍길동"
-
-# 날짜 범위로 필터링
-git log --since="2024-01-01" --until="2024-12-31"
-
-# 커밋 내용(diff) 함께 보기
-git log -p
-
-# 변경된 파일 목록만 보기
-git log --stat
-```
-
-```
-📤 git log --oneline 출력 예시:
-
-a1b2c3d (HEAD -> main) ✨ 로그인 기능 추가
-e4f5g6h 📝 README 수정
-i7j8k9l 🎉 프로젝트 시작
-
-   ↑       ↑
-커밋 해시   커밋 메시지
-(고유 ID)
-```
-
-### 📋 변경 내용 보기 (git diff)
-
-```bash
-# 작업 디렉토리의 변경사항 보기
+# Working Directory vs Staging Area
 git diff
 
-# 스테이지된 변경사항 보기
+# Staging Area vs 마지막 커밋
 git diff --staged
 
-# 두 커밋 비교하기
-git diff 커밋해시1 커밋해시2
-```
+# 커밋 간 비교
+git diff HEAD~3 HEAD
 
-```
-📤 출력 예시:
+# 파일 단위 비교
+git diff -- src/app.js
 
-diff --git a/README.md b/README.md
---- a/README.md
-+++ b/README.md
-@@ -1,3 +1,4 @@
- # My Project
- 
--Hello World          ← 🔴 삭제된 줄
-+Hello Git!           ← 🟢 추가된 줄
-+Welcome!             ← 🟢 추가된 줄
+# 변경된 파일 이름만 보기
+git diff --name-only
+
+# 변경 통계
+git diff --stat
 ```
 
 ---
 
-## 🌿 브랜치 다루기
+## Ch 7. 히스토리 읽기
 
-<div align="center">
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Animals/Deciduous%20Tree.png" alt="Tree" width="50" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Animals/Evergreen%20Tree.png" alt="Pine" width="60" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Animals/Deciduous%20Tree.png" alt="Tree" width="50" />
-</div>
+### git log 활용
 
-### 🤔 브랜치란?
+```bash
+# 기본
+git log
+
+# 한 줄 요약
+git log --oneline
+
+# 그래프 시각화
+git log --oneline --graph --all
+
+# 최근 N개
+git log -5
+
+# 특정 파일의 이력
+git log -- src/app.js
+
+# 파일 이름이 바뀌어도 추적
+git log --follow -- src/app.js
+
+# 특정 내용이 변경된 커밋 찾기
+git log -S "함수명"
+
+# 특정 함수의 변경 이력 (매우 강력)
+git log -L :functionName:src/app.js
+
+# 작성자 필터
+git log --author="홍길동"
+
+# 날짜 범위
+git log --since="2024-01-01" --until="2024-06-30"
+
+# 커밋 메시지 검색
+git log --grep="로그인"
+
+# 변경 내용과 함께
+git log -p
+
+# 변경 통계와 함께
+git log --stat
+
+# 예쁜 포맷
+git log --pretty=format:"%h %an %ar %s"
+```
+
+### git log 포맷 변수
+
+| 변수 | 의미 | 예시 |
+|:---|:---|:---|
+| `%H` | 전체 해시 | `a1b2c3d4e5f6...` |
+| `%h` | 짧은 해시 | `a1b2c3d` |
+| `%an` | 작성자 이름 | `홍길동` |
+| `%ae` | 작성자 이메일 | `hong@mail.com` |
+| `%ar` | 상대 시간 | `2 hours ago` |
+| `%s` | 커밋 메시지 | `feat: 로그인` |
+
+### git blame — 줄 단위 추적
+
+```bash
+# 누가 어떤 줄을 마지막으로 수정했는지
+git blame src/app.js
+
+# 특정 범위만
+git blame -L 10,20 src/app.js
+```
+
+### git show — 커밋 상세 보기
+
+```bash
+# 특정 커밋의 변경 내용
+git show abc1234
+
+# 특정 커밋의 특정 파일
+git show abc1234:src/app.js
+```
+
+---
+
+## Ch 8. 커밋 메시지 컨벤션
+
+### Conventional Commits
+
+업계에서 가장 널리 사용되는 형식입니다.
+
+```
+<type>(<scope>): <subject>
+                                ← 빈 줄
+<body>                          ← 선택
+                                ← 빈 줄
+<footer>                        ← 선택
+```
+
+### Type 목록
+
+| Type | 의미 | 예시 |
+|:---|:---|:---|
+| `feat` | 새로운 기능 | `feat(auth): 소셜 로그인 추가` |
+| `fix` | 버그 수정 | `fix(cart): 수량 음수 입력 방지` |
+| `docs` | 문서 변경 | `docs: API 엔드포인트 문서 업데이트` |
+| `style` | 포맷팅, 세미콜론 등 (동작 변화 없음) | `style: ESLint 경고 수정` |
+| `refactor` | 리팩토링 (기능 변화 없음) | `refactor(user): 서비스 레이어 분리` |
+| `perf` | 성능 개선 | `perf: 이미지 지연 로딩 적용` |
+| `test` | 테스트 추가/수정 | `test(auth): 로그인 실패 케이스 추가` |
+| `build` | 빌드 시스템, 외부 의존성 | `build: webpack 5로 마이그레이션` |
+| `ci` | CI 설정 변경 | `ci: GitHub Actions 캐시 추가` |
+| `chore` | 기타 잡일 | `chore: .gitignore 업데이트` |
+
+### 좋은 커밋 메시지 원칙
+
+```
+✅ 좋은 예시:
+  fix(payment): 결제 완료 후 재고 차감 누락 수정
+
+  결제 완료 콜백에서 재고 차감 로직이 빠져 있어
+  주문은 완료되지만 재고가 줄지 않는 문제가 있었음.
+
+  Closes #247
+```
+
+```
+❌ 나쁜 예시:
+  수정
+  fix
+  버그 고침
+  wip
+  aaaa
+```
+
+**원칙 정리:**
+
+1. **제목은 50자 이내**, 명령형으로 ("추가한다" X → "추가" O)
+2. **제목과 본문 사이에 빈 줄** 하나
+3. **본문은 "왜"에 집중** (코드를 보면 "무엇"은 알 수 있으니까)
+4. **관련 이슈 번호** 연결 (`Closes #123`, `Refs #456`)
+
+---
+
+<br>
+
+# Part 3 — 브랜치 전략
+
+---
+
+## Ch 9. 브랜치의 본질
+
+### 브랜치는 포인터다
+
+브랜치의 실체는 `.git/refs/heads/` 안에 있는 **40바이트 텍스트 파일**입니다.
+그 안에는 커밋 해시 하나만 적혀 있습니다.
+
+```bash
+cat .git/refs/heads/main
+# → a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0
+```
+
+그래서 브랜치 생성은 **순식간**에 이루어집니다. 파일 하나 만드는 것이니까요.
+SVN처럼 디렉토리 전체를 복사하는 것이 아닙니다.
+
+```
+HEAD → main → commit C
+               ↑
+               │
+           feature → commit C  (같은 커밋을 가리킴)
+
+브랜치를 만든 직후에는 두 브랜치가 같은 커밋을 가리킵니다.
+이후 각자 커밋하면 갈라집니다.
+```
+
+### 브랜치 기본 명령어
+
+```bash
+# ── 조회 ──
+git branch                  # 로컬 브랜치
+git branch -a               # 전체 (로컬 + 원격)
+git branch -v               # 각 브랜치의 마지막 커밋
+git branch --merged         # 현재 브랜치에 이미 병합된 브랜치
+git branch --no-merged      # 아직 병합되지 않은 브랜치
+
+# ── 생성 ──
+git branch feature/login              # 생성만
+git switch -c feature/login           # 생성 + 이동 (권장)
+git checkout -b feature/login         # 생성 + 이동 (레거시)
+git switch -c feature/login origin/develop  # 원격 브랜치 기반으로 생성
+
+# ── 이동 ──
+git switch main              # 권장
+git checkout main            # 레거시
+
+# ── 이름 변경 ──
+git branch -m old-name new-name
+git branch -m new-name       # 현재 브랜치 이름 변경
+
+# ── 삭제 ──
+git branch -d feature/login  # 병합된 브랜치만 삭제
+git branch -D feature/login  # 강제 삭제
+```
 
 > [!TIP]
-> 브랜치 = **독립적인 작업 공간** (나무의 가지처럼!)
+> `git switch`와 `git restore`는 Git 2.23에서 도입되었습니다.
+> `git checkout`이 브랜치 이동과 파일 복원을 모두 담당해서 혼란스러웠기 때문에,
+> **브랜치 이동은 `switch`**, **파일 복원은 `restore`**로 분리한 것입니다.
 
-```mermaid
-gitGraph
-    commit id: "Initial"
-    commit id: "Add README"
-    branch feature/login
-    checkout feature/login
-    commit id: "Login UI"
-    commit id: "Login Logic"
-    checkout main
-    branch feature/signup
-    checkout feature/signup
-    commit id: "Signup Form"
-    checkout main
-    merge feature/login
-    commit id: "Merge login"
-```
+### 브랜치 네이밍 컨벤션
 
-```
-🌳 브랜치 시각화:
+| 접두사 | 용도 | 예시 |
+|:---|:---|:---|
+| `feature/` | 새 기능 개발 | `feature/oauth-login` |
+| `fix/` 또는 `bugfix/` | 버그 수정 | `fix/cart-total-calc` |
+| `hotfix/` | 긴급 수정 (프로덕션) | `hotfix/payment-crash` |
+| `release/` | 릴리즈 준비 | `release/2.1.0` |
+| `chore/` | 잡일 | `chore/update-deps` |
+| `refactor/` | 리팩토링 | `refactor/user-service` |
 
-                    🌿 feature/login (로그인 개발 중)
-                   /
-    ──●────●────●────●  main (메인 브랜치)
-                   \
-                    🌿 feature/signup (회원가입 개발 중)
+---
 
-✨ 각 브랜치에서 독립적으로 개발 후, 나중에 합치면 됩니다!
-```
+## Ch 10. Merge의 모든 것
 
-### 📋 브랜치 목록 보기
-
-```bash
-# 로컬 브랜치 목록
-git branch
-
-# 원격 브랜치 포함 모든 브랜치
-git branch -a
-```
-
-```
-📤 출력 예시:
-
-* main                    ← * 표시 = 현재 브랜치
-  feature/login
-  feature/signup
-```
-
-### 🆕 브랜치 생성
-
-```bash
-# 브랜치 생성만
-git branch feature/login
-
-# 브랜치 생성 + 이동 ⭐
-git checkout -b feature/login
-
-# 최신 버전 (위와 동일)
-git switch -c feature/login
-```
-
-### 🔄 브랜치 이동
-
-```bash
-# 기존 방식
-git checkout main
-
-# 최신 방식 ⭐
-git switch main
-```
-
-### 🔀 브랜치 병합 (merge)
-
-```bash
-# 1. 먼저 병합 받을 브랜치로 이동
-git switch main
-
-# 2. 다른 브랜치를 현재 브랜치로 병합
-git merge feature/login
-```
-
-```
-병합 전:
-                    ●────● feature/login
-                   /
-    ──●────●────●  main
-
-
-병합 후 (git merge feature/login):
-
-                    ●────●
-                   /      \
-    ──●────●────●──────────● main (+ feature/login 내용)
-```
-
-### ⚡ 충돌 해결하기
-
-> [!WARNING]
-> 충돌은 **무섭지 않아요!** 천천히 따라하면 됩니다.
-
-#### 📍 충돌 발생 시 파일 내용
-
-```diff
-<<<<<<< HEAD
-현재 브랜치의 내용 (내 코드)
-=======
-병합하려는 브랜치의 내용 (다른 사람 코드)
->>>>>>> feature/login
-```
-
-#### 🔧 해결 단계
+### Merge 유형 비교
 
 ```mermaid
 flowchart TD
-    A["🚨 충돌 발생!"] --> B["📂 충돌 파일 열기"]
-    B --> C["✏️ 원하는 내용만 남기기"]
-    C --> D["🗑️ <<<, ===, >>> 표시 삭제"]
-    D --> E["git add ."]
-    E --> F["git commit"]
-    F --> G["✅ 해결 완료!"]
-    
-    style A fill:#ffcdd2
-    style G fill:#c8e6c9
+    A["두 브랜치를 합치고 싶다"] --> B{"main이 그동안\n새 커밋이 있었나?"}
+    B -->|"없음"| C["Fast-forward\n(포인터만 이동)"]
+    B -->|"있음"| D{"어떤 방식으로?"}
+    D --> E["Merge commit\n(3-way merge)"]
+    D --> F["Squash merge\n(하나로 압축)"]
+    D --> G["Rebase + FF\n(일직선 정리)"]
 ```
 
-<details>
-<summary>📖 <b>충돌 해결 예시 보기</b></summary>
-<br>
+#### 1. Fast-forward Merge
 
-**충돌 전:**
-```javascript
-<<<<<<< HEAD
-const greeting = "안녕하세요";
-=======
-const greeting = "Hello";
->>>>>>> feature/english
+main에 새 커밋이 없을 때, 포인터만 앞으로 이동합니다.
+
 ```
+Before:
+  main → A ── B
+                 \
+                  C ── D ← feature
 
-**해결 후 (둘 다 사용하기로 결정):**
-```javascript
-const greetingKo = "안녕하세요";
-const greetingEn = "Hello";
+After (git merge feature):
+  main → A ── B ── C ── D
 ```
-
-</details>
-
-### 🗑️ 브랜치 삭제
 
 ```bash
-# 병합된 브랜치 삭제
-git branch -d feature/login
-
-# 강제 삭제 (병합 안 된 브랜치도 삭제)
-git branch -D feature/login
+git switch main
+git merge feature/login
+# Fast-forward 발생
 ```
 
----
+#### 2. 3-way Merge (Merge Commit)
 
-## 🌐 원격 저장소 (GitHub)
-
-<div align="center">
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Globe%20Showing%20Americas.png" alt="Globe" width="50" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Cloud.png" alt="Cloud" width="60" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Globe%20Showing%20Asia-Australia.png" alt="Globe" width="50" />
-
-**전 세계 어디서나 접근 가능!**
-</div>
-
-### 📡 원격 저장소란?
-
-> [!TIP]
-> 원격 저장소 = **클라우드에 있는 내 프로젝트 복사본**
-
-```mermaid
-flowchart LR
-    subgraph Local ["💻 내 컴퓨터"]
-        A[(".git/")]
-    end
-    
-    subgraph Remote ["☁️ GitHub"]
-        B[(".git/")]
-    end
-    
-    A -->|"🚀 git push"| B
-    B -->|"📥 git pull"| A
-    
-    style Local fill:#e3f2fd
-    style Remote fill:#fff3e0
-```
-
-<table>
-<tr>
-<td align="center" width="50%">
-
-### 💻 로컬 저장소
-(내 컴퓨터)
+main에도 새 커밋이 있을 때, **병합 커밋**이 생깁니다.
 
 ```
-└── my-project/
-    ├── .git/   ← 로컬 Git 데이터
-    └── files...
+Before:
+               C ── D ← feature
+              /
+  main → A ── B ── E ── F
+
+After (git merge feature):
+               C ── D
+              /       \
+  main → A ── B ── E ── F ── M ← merge commit
 ```
-
-</td>
-<td align="center" width="50%">
-
-### ☁️ 원격 저장소
-(GitHub, GitLab 등)
-
-```
-└── repository/
-    ├── .git/   ← 원격 Git 데이터
-    └── files...
-```
-
-</td>
-</tr>
-</table>
-
-### 🔗 원격 저장소 연결
 
 ```bash
-# 원격 저장소 추가
-git remote add origin https://github.com/username/repo.git
-
-# 연결된 원격 저장소 확인
-git remote -v
-
-# 원격 저장소 URL 변경
-git remote set-url origin https://github.com/username/new-repo.git
-
-# 원격 저장소 삭제
-git remote remove origin
-
-# 원격 저장소 이름 변경
-git remote rename origin upstream
-
-# 여러 원격 저장소 추가 (예: fork한 경우)
-git remote add upstream https://github.com/original/repo.git
+git switch main
+git merge feature/login
+# Merge commit 생성
 ```
 
+#### 3. Squash Merge
+
+feature의 모든 커밋을 **하나로 압축**해서 반영합니다.
+
 ```
-📤 출력 예시:
+Before:
+               C ── D ── E ← feature (3개 커밋)
+              /
+  main → A ── B
 
-origin  https://github.com/username/repo.git (fetch)
-origin  https://github.com/username/repo.git (push)
-
-💡 'origin'은 원격 저장소의 별명이에요!
+After (git merge --squash feature):
+  main → A ── B ── S  (S에 C+D+E 내용이 합쳐짐)
 ```
-
-### 📡 원격 브랜치 관리
 
 ```bash
-# 원격 브랜치 목록 보기
-git branch -r
-
-# 원격 브랜치 정보 업데이트
-git remote update
-
-# 삭제된 원격 브랜치 정리
-git remote prune origin
-
-# 또는 fetch할 때 자동 정리
-git fetch --prune
-```
-
-### ⬆️ 푸시 (git push)
-
-```bash
-# 첫 푸시 (업스트림 설정)
-git push -u origin main
-
-# 이후 푸시
-git push
-
-# 특정 브랜치 푸시
-git push origin feature/login
-```
-
-```
-📊 푸시 과정:
-
-🖥️ 로컬                    ☁️ GitHub
-───────                   ─────────
-●────●────●  main   ──→   ●────●────●  main
-
-"내 커밋들을 GitHub으로 업로드!"
-```
-
-### ⬇️ 풀 (git pull)
-
-```bash
-# 원격 저장소의 변경사항 가져오기 + 병합
-git pull origin main
-
-# 또는 간단히
-git pull
-```
-
-```
-📊 풀 과정:
-
-☁️ GitHub                  🖥️ 로컬
-─────────                 ───────
-●────●────●  main   ──→   ●────●────●  main
-
-"GitHub의 최신 내용을 내 컴퓨터로 다운로드!"
-```
-
-### 🔍 Fetch vs Pull
-
-```bash
-# fetch: 가져오기만 (병합 X)
-git fetch origin
-
-# pull: 가져오기 + 병합 (fetch + merge)
-git pull origin main
-```
-
-```
-📊 비교:
-
-git fetch:
-   원격의 정보만 가져와요
-   └── 로컬 파일은 변경 안 됨
-   └── 안전하게 확인 후 merge 가능
-
-git pull:
-   가져오기 + 자동 병합
-   └── 한 번에 최신화
-   └── 충돌 발생 가능
-```
-
----
-
-## 👥 협업하기
-
-<div align="center">
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Man%20Technologist.png" alt="Man Tech" width="60" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Handshake.png" alt="Handshake" width="70" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Woman%20Technologist.png" alt="Woman Tech" width="60" />
-
-**함께하면 더 강력해집니다!**
-</div>
-
-### 🔄 기본 협업 워크플로우
-
-```mermaid
-sequenceDiagram
-    participant L as 💻 내 컴퓨터
-    participant G as ☁️ GitHub
-    participant R as 👥 팀원
-    
-    L->>L: git pull origin main
-    Note over L: 최신 코드 가져오기
-    
-    L->>L: git switch -c feature/new
-    Note over L: 작업 브랜치 생성
-    
-    L->>L: 코드 작성 ✏️
-    L->>L: git add . && git commit
-    
-    L->>G: git push origin feature/new
-    Note over G: Pull Request 생성
-    
-    G->>R: 코드 리뷰 요청 🔍
-    R->>G: 리뷰 완료 ✅
-    
-    G->>G: main에 Merge
-    Note over G: 협업 완료! 🎉
+git switch main
+git merge --squash feature/login
+git commit -m "feat(auth): 로그인 기능 추가"
 ```
 
 > [!NOTE]
-> **Pull Request (PR)** = "내 코드를 봐주세요!"라고 요청하는 것
+> Squash merge 후에는 feature 브랜치의 커밋 히스토리가 main에 남지 않습니다.
+> PR 단위로 깔끔한 히스토리를 원할 때 유용합니다.
 
-### 🍴 Fork & Pull Request
+#### 4. No Fast-forward
 
+Fast-forward가 가능한 상황에서도 강제로 merge commit을 만듭니다.
+"이 기능은 별도 브랜치에서 개발했다"는 기록을 남기고 싶을 때 사용합니다.
+
+```bash
+git merge --no-ff feature/login
 ```
-📌 오픈소스 기여 방법:
 
-1. Fork: 원본 저장소를 내 계정으로 복사
-   
-   👤 원본 저장소           👤 내 저장소
-   ┌──────────┐  Fork    ┌──────────┐
-   │  repo    │  ────→   │  repo    │
-   └──────────┘          └──────────┘
+### 언제 어떤 Merge를 쓰나?
 
-2. Clone: 내 저장소를 로컬로
-   git clone https://github.com/내계정/repo.git
-
-3. 수정 & 커밋 & 푸시
-   git add .
-   git commit -m "수정 내용"
-   git push
-
-4. Pull Request 생성
-   └── GitHub에서 "New Pull Request" 클릭
-```
+| 상황 | 추천 전략 | 이유 |
+|:---|:---|:---|
+| 간단한 1~2개 커밋 hotfix | Fast-forward | 히스토리 간결 |
+| PR로 기능 개발 완료 | Squash merge | PR 단위로 깔끔한 히스토리 |
+| 장기 브랜치 병합 (release 등) | `--no-ff` | 브랜치 경계를 기록 |
+| 히스토리를 일직선으로 | Rebase + FF | 깔끔한 히스토리 |
 
 ---
 
-## ⏪ 되돌리기
+## Ch 11. Rebase — 히스토리 다시 쓰기
 
-<div align="center">
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Alarm%20Clock.png" alt="Clock" width="50" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Symbols/Counterclockwise%20Arrows%20Button.png" alt="Undo" width="60" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Hourglass%20Done.png" alt="Hourglass" width="50" />
+### Rebase란?
 
-**실수해도 걱정 마세요!**
-</div>
-
-### 🎯 상황별 되돌리기 방법
+브랜치의 **시작 지점(base)**을 바꾸는 것입니다.
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                     상황별 되돌리기                           │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  📍 상황 1: 수정한 파일을 원래대로                             │
-│     └── git checkout -- 파일명                              │
-│     └── git restore 파일명  (최신)                           │
-│                                                             │
-│  📍 상황 2: add 취소 (스테이지에서 내리기)                      │
-│     └── git reset HEAD 파일명                               │
-│     └── git restore --staged 파일명  (최신)                  │
-│                                                             │
-│  📍 상황 3: 커밋 취소                                         │
-│     └── git reset --soft HEAD~1  (커밋만 취소)               │
-│     └── git reset --mixed HEAD~1 (커밋 + add 취소)           │
-│     └── git reset --hard HEAD~1  (모든 것 취소) ⚠️            │
-│                                                             │
-│  📍 상황 4: 커밋 수정                                         │
-│     └── git commit --amend                                  │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
+Before:
+               C ── D ← feature
+              /
+  A ── B ── E ── F ← main
+
+After (feature에서 git rebase main):
+
+                          C' ── D' ← feature
+                         /
+  A ── B ── E ── F ← main
+
+C'와 D'는 내용은 같지만 새로운 커밋(해시가 다름)입니다.
 ```
 
-### 🔄 git reset 옵션 비교
+```bash
+# feature 브랜치에서:
+git switch feature/login
+git rebase main
+
+# 이후 main에서 Fast-forward merge:
+git switch main
+git merge feature/login
+```
+
+### Merge vs Rebase
+
+| | Merge | Rebase |
+|:---|:---|:---|
+| **히스토리** | 분기 이력 보존 | 일직선 정리 |
+| **커밋 해시** | 기존 유지 | 새로 생성됨 |
+| **충돌 해결** | 한 번에 | 커밋마다 발생 가능 |
+| **안전성** | 히스토리 변경 없음 | 히스토리 재작성 |
+| **사용 시점** | 공유된 브랜치 | 로컬 브랜치 정리 |
 
 > [!CAUTION]
-> `--hard`는 복구가 어려우니 신중하게 사용하세요!
+> **Golden Rule: 이미 Push한 커밋은 Rebase하지 마세요.**
+> 다른 사람이 그 커밋을 기반으로 작업 중일 수 있습니다.
+> Rebase는 커밋 해시를 바꾸기 때문에, 협업 중인 브랜치에서 사용하면 히스토리가 꼬입니다.
 
-```
-옵션              Working Dir    Staging Area    Commits
-                    (작업 파일)     (add된 것)      (커밋)
-────────────────────────────────────────────────────────
---soft             ✅ 유지          ✅ 유지          ❌ 취소
---mixed (기본)     ✅ 유지          ❌ 취소          ❌ 취소
---hard             ❌ 취소          ❌ 취소          ❌ 취소  ⚠️ 위험!
-```
-
-### 🆕 안전하게 되돌리기 (git revert)
+### Rebase 중 충돌 해결
 
 ```bash
-# 특정 커밋을 취소하는 새 커밋 생성
-git revert 커밋해시
-```
+git rebase main
+# 충돌 발생!
 
-```
-📊 reset vs revert:
+# 1. 충돌 파일 수정
+# 2. Stage
+git add .
+# 3. Rebase 계속 진행
+git rebase --continue
 
-reset (과거를 지움):
-    A ── B ── C ── D
-              ↓
-    A ── B ── C  (D가 사라짐!)
+# 또는 이 커밋 건너뛰기
+git rebase --skip
 
-revert (취소 커밋 추가):
-    A ── B ── C ── D
-              ↓
-    A ── B ── C ── D ── D'  (D를 취소하는 D' 추가)
-    
-💡 협업 시에는 revert 사용을 권장!
-   (다른 사람의 히스토리에 영향 없음)
+# 또는 전체 취소 (원래 상태로 복귀)
+git rebase --abort
 ```
 
 ---
 
-## 🔧 고급 기능
+## Ch 12. 충돌 해결 완전 정복
 
-<div align="center">
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Fire.png" alt="Fire" width="50" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/High%20Voltage.png" alt="High Voltage" width="60" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Fire.png" alt="Fire" width="50" />
+### 충돌은 왜 발생하는가?
 
-**이제부터 고급 기능을 배워봅시다!**
-</div>
+두 브랜치가 **같은 파일의 같은 부분**을 서로 다르게 수정했을 때 발생합니다.
+Git은 어느 쪽이 맞는지 판단할 수 없으므로, 사람에게 결정을 맡깁니다.
 
-### 📦 Stash (임시 저장)
-
-> [!TIP]
-> Stash = **작업 중인 파일을 서랍에 잠시 넣어두는 것!**
-
-```mermaid
-flowchart LR
-    A["📝 작업 중..."] -->|"급한 일 발생!"| B{"git stash"}
-    B -->|"임시 저장"| C["📦 Stash 보관함"]
-    C --> D["다른 작업 처리"]
-    D -->|"다시 돌아옴"| E{"git stash pop"}
-    E --> F["📝 작업 재개!"]
-    
-    style C fill:#fff9c4
-```
-
-#### 🎮 게임으로 비유
+### 충돌 파일의 구조
 
 ```
-"보스전 중인데 급하게 마을 가야 할 때"
+자동으로 병합된 부분 (충돌 없는 영역)
+...
 
-1. git stash     → 현재 상태 임시 저장 📦
-2. 다른 작업 수행   → 마을 가서 물약 구입 🏪
-3. git stash pop → 임시 저장 불러오기 🔄
+<<<<<<< HEAD
+현재 브랜치 (내 코드)
+=======
+병합 대상 브랜치 (상대 코드)
+>>>>>>> feature/login
+
+자동으로 병합된 부분 (충돌 없는 영역)
 ```
 
-#### 명령어
+### 해결 절차
 
 ```bash
-# 현재 작업을 임시 저장
-git stash
+# 1. 충돌 발생 확인
+git status
+# "both modified: src/auth.js" 같은 메시지
 
-# 메시지와 함께 저장
-git stash save "작업 중인 로그인 기능"
+# 2. 충돌 파일 열기 → <<<, ===, >>> 표시를 찾아 수정
 
-# 저장된 목록 보기
+# 3. 원하는 내용만 남기고 표시 삭제
+
+# 4. Stage & Commit
+git add src/auth.js
+git commit
+# (merge인 경우 자동 메시지 생성됨)
+```
+
+### 실전 예시
+
+**충돌 상태:**
+
+```javascript
+function getGreeting(name) {
+<<<<<<< HEAD
+  return `안녕하세요, ${name}님!`;
+=======
+  return `Hello, ${name}!`;
+>>>>>>> feature/i18n
+}
+```
+
+**해결 — 두 기능을 모두 살리기:**
+
+```javascript
+function getGreeting(name, locale = 'ko') {
+  if (locale === 'ko') return `안녕하세요, ${name}님!`;
+  return `Hello, ${name}!`;
+}
+```
+
+### 충돌 해결 도구
+
+```bash
+# Git 내장 3-way merge 도구 실행
+git mergetool
+
+# VS Code를 merge 도구로 설정
+git config --global merge.tool vscode
+git config --global mergetool.vscode.cmd 'code --wait --merge $REMOTE $LOCAL $BASE $MERGED'
+```
+
+> [!TIP]
+> VS Code에서는 충돌 발생 시 "Accept Current", "Accept Incoming", "Accept Both" 버튼이 표시됩니다.
+> 하지만 복잡한 충돌에서는 버튼에 의존하지 말고, **코드를 읽고 직접 판단**하세요.
+
+---
+
+<br>
+
+# Part 4 — 팀과 함께 쓰는 Git
+
+---
+
+## Ch 13. 원격 저장소 이해하기
+
+### 원격 저장소의 구조
+
+```
+                     ☁️ GitHub (origin)
+                    ┌─────────────────┐
+                    │  main           │
+                    │  develop        │
+                    │  feature/login  │
+                    └─────────────────┘
+                       ↑           ↓
+                    git push    git fetch
+                       ↑           ↓
+   💻 내 컴퓨터       ┌─────────────────┐
+                    │  main           │ ← 로컬 브랜치
+                    │  origin/main    │ ← 원격 추적 브랜치
+                    │  origin/develop │
+                    └─────────────────┘
+```
+
+**원격 추적 브랜치(Remote-tracking branch):**
+`origin/main`은 "마지막으로 fetch했을 때 원격의 main이 가리키던 커밋"을 의미합니다.
+직접 수정할 수 없고, `git fetch` 또는 `git pull` 시에만 업데이트됩니다.
+
+### 원격 저장소 관리
+
+```bash
+# ── 조회 ──
+git remote -v
+
+# ── 추가 ──
+git remote add origin https://github.com/user/repo.git
+
+# ── 여러 원격 저장소 (Fork 워크플로우) ──
+git remote add upstream https://github.com/original/repo.git
+# origin = 내 fork, upstream = 원본
+
+# ── URL 변경 ──
+git remote set-url origin https://github.com/user/new-repo.git
+
+# ── 삭제 ──
+git remote remove origin
+
+# ── 상세 정보 ──
+git remote show origin
+```
+
+---
+
+## Ch 14. Push, Pull, Fetch의 관계
+
+### 3개 명령어 비교
+
+```
+                 ☁️ Remote
+                 ┌──────┐
+                 │      │
+        push ──→ │      │ ←── fetch (데이터만 가져옴)
+                 │      │
+                 └──────┘
+                    ↓
+              pull = fetch + merge
+                    ↓
+                 💻 Local
+```
+
+### Push
+
+```bash
+# 첫 push (업스트림 설정)
+git push -u origin main
+# -u = --set-upstream : 이후부터 'git push'만 입력해도 됨
+
+# 일반 push
+git push
+
+# 특정 브랜치
+git push origin feature/login
+
+# 원격 브랜치 삭제
+git push origin --delete feature/login
+
+# 태그 push
+git push origin v1.0.0
+git push origin --tags  # 모든 태그
+```
+
+### Fetch
+
+```bash
+# 모든 원격 브랜치 정보 가져오기 (로컬 파일 변경 없음)
+git fetch origin
+
+# 삭제된 원격 브랜치 정리
+git fetch --prune
+
+# 모든 원격 저장소에서
+git fetch --all
+```
+
+### Pull
+
+```bash
+# 기본 (fetch + merge)
+git pull origin main
+
+# Rebase 방식 (merge commit 없이 깔끔하게)
+git pull --rebase origin main
+
+# 기본 pull 전략을 rebase로 설정
+git config --global pull.rebase true
+```
+
+> [!TIP]
+> `git pull --rebase`를 습관화하면 불필요한 merge commit 없이
+> 히스토리가 깔끔해집니다. 많은 팀에서 권장하는 방식입니다.
+
+### Push 거부 상황
+
+```
+ ! [rejected]        main -> main (fetch first)
+
+이 에러가 발생하는 이유:
+원격에 내가 모르는 새 커밋이 있어서,
+그냥 push하면 그 커밋이 사라지기 때문입니다.
+```
+
+**해결 방법:**
+
+```bash
+# 방법 1: pull 후 push
+git pull --rebase origin main
+git push
+
+# 방법 2: 강제 push (위험 — 팀에서 합의 없이 사용 금지)
+git push --force-with-lease
+# --force-with-lease는 --force보다 안전합니다.
+# 마지막 fetch 이후 원격에 새 커밋이 있으면 거부합니다.
+```
+
+> [!CAUTION]
+> `git push --force`는 원격의 커밋을 덮어씁니다.
+> 다른 팀원의 작업이 사라질 수 있으니, 반드시 `--force-with-lease`를 사용하세요.
+
+---
+
+## Ch 15. Pull Request 워크플로우
+
+### PR 기반 개발 흐름
+
+```mermaid
+sequenceDiagram
+    participant D as 개발자
+    participant L as 로컬
+    participant R as 원격 (GitHub)
+    participant T as 팀원
+
+    D->>L: git switch -c feature/login
+    D->>L: 코드 작성 & 커밋
+    D->>R: git push -u origin feature/login
+    D->>R: Pull Request 생성
+    R->>T: 코드 리뷰 요청
+    T->>R: 리뷰 코멘트 작성
+    D->>L: 피드백 반영 & 수정 커밋
+    D->>R: git push
+    T->>R: Approve ✅
+    R->>R: main에 Merge
+    D->>L: git switch main && git pull
+    D->>L: git branch -d feature/login
+```
+
+### PR 작성 팁
+
+좋은 PR은 리뷰어의 시간을 절약합니다.
+
+```markdown
+## 개요
+결제 완료 후 재고가 차감되지 않는 버그를 수정합니다.
+
+## 변경 사항
+- 결제 완료 콜백에 재고 차감 로직 추가
+- 재고 부족 시 결제 진행 차단
+
+## 테스트
+- [x] 정상 결제 시 재고 차감 확인
+- [x] 재고 0인 상품 결제 시도 → 에러 메시지 확인
+- [x] 동시 주문 시 재고 정합성 확인
+
+## 관련 이슈
+Closes #247
+```
+
+### Fork & PR (오픈소스 기여)
+
+```bash
+# 1. 원본 저장소를 Fork (GitHub UI에서)
+# 2. Fork한 저장소를 Clone
+git clone https://github.com/내계정/repo.git
+
+# 3. 원본을 upstream으로 등록
+git remote add upstream https://github.com/원본/repo.git
+
+# 4. 작업 브랜치 생성
+git switch -c fix/typo-in-docs
+
+# 5. 수정 & 커밋 & 푸시
+git add .
+git commit -m "docs: README 오타 수정"
+git push origin fix/typo-in-docs
+
+# 6. GitHub에서 PR 생성 (내 fork → 원본 저장소)
+
+# 7. 원본에 변경이 있으면 동기화
+git fetch upstream
+git rebase upstream/main
+git push --force-with-lease
+```
+
+---
+
+## Ch 16. 브랜치 전략: Git Flow vs Trunk-Based
+
+### Git Flow
+
+```
+main ──────●───────────────────────●──────── (프로덕션)
+            \                     /
+develop ─────●──●──●──●──●──●──●──────────── (개발 통합)
+              \       / \     /
+feature ───────●──●──●   ●──●
+                             \
+release ──────────────────────●──────────────
+                                \
+hotfix ──────────────────────────●───────────
+```
+
+| 브랜치 | 용도 | 수명 |
+|:---|:---|:---|
+| `main` | 프로덕션 배포 코드 | 영구 |
+| `develop` | 다음 릴리즈 개발 | 영구 |
+| `feature/*` | 기능 개발 | develop에서 분기, 완료 시 병합 |
+| `release/*` | 릴리즈 준비 (QA, 버전 업) | develop에서 분기, main+develop에 병합 |
+| `hotfix/*` | 긴급 버그 수정 | main에서 분기, main+develop에 병합 |
+
+**적합한 경우:** 릴리즈 주기가 긴 프로젝트, 명확한 버전 관리가 필요한 경우
+
+### Trunk-Based Development
+
+```
+main ──●──●──●──●──●──●──●──●──●──●──●── (항상 배포 가능)
+        \  /    \  /    \  /
+feature  ●●      ●●      ●●   (수명이 매우 짧은 브랜치)
+```
+
+원칙:
+- main 브랜치에 자주, 작은 단위로 병합
+- Feature 브랜치는 1~2일 이내로 유지
+- Feature Flag로 미완성 기능 숨김
+- CI/CD 파이프라인 필수
+
+**적합한 경우:** 지속적 배포(CD)를 하는 팀, 빠른 개발 사이클
+
+### GitHub Flow (간소화 버전)
+
+```
+main ──●──────────────●──●──── (항상 배포 가능)
+        \            /
+feature  ●──●──●──●──  → PR → Merge
+```
+
+가장 단순한 워크플로우:
+1. main에서 브랜치 생성
+2. 작업 & 커밋
+3. PR 생성
+4. 리뷰 & 병합
+5. 배포
+
+**적합한 경우:** 소규모 팀, 웹 서비스
+
+---
+
+<br>
+
+# Part 5 — 프로처럼 쓰는 Git
+
+---
+
+## Ch 17. 되돌리기 총정리
+
+Git의 되돌리기는 **"무엇을 되돌리고 싶은가"**에 따라 선택합니다.
+
+### 상황별 명령어 매핑
+
+```
+┌──────────────────────────────────────────────────────────────────┐
+│  나는 지금...                              │  이 명령을 써야 한다  │
+├──────────────────────────────────────────────────────────────────┤
+│                                                                  │
+│  📝 파일 수정을 취소하고 싶다 (add 전)                             │
+│  → git restore <파일>                                            │
+│                                                                  │
+│  📦 add를 취소하고 싶다 (커밋 전)                                  │
+│  → git restore --staged <파일>                                   │
+│                                                                  │
+│  💬 커밋 메시지를 수정하고 싶다                                     │
+│  → git commit --amend                                            │
+│                                                                  │
+│  📎 직전 커밋에 파일을 빠뜨렸다                                     │
+│  → git add <파일> && git commit --amend --no-edit                │
+│                                                                  │
+│  ⏪ 커밋을 취소하되, 작업 내용은 남기고 싶다                         │
+│  → git reset --soft HEAD~1                                       │
+│                                                                  │
+│  ⏪ 커밋 + add를 취소하되, 파일은 남기고 싶다                       │
+│  → git reset HEAD~1       (--mixed가 기본값)                     │
+│                                                                  │
+│  💣 커밋 + 파일 변경까지 전부 되돌리고 싶다                          │
+│  → git reset --hard HEAD~1                                       │
+│                                                                  │
+│  🔄 이미 Push한 커밋을 안전하게 취소하고 싶다                       │
+│  → git revert <커밋해시>                                          │
+│                                                                  │
+│  📁 특정 커밋의 특정 파일만 가져오고 싶다                            │
+│  → git restore --source=<커밋해시> -- <파일>                      │
+│                                                                  │
+└──────────────────────────────────────────────────────────────────┘
+```
+
+### reset 옵션 비교
+
+```
+                   Working Dir    Staging    Commits
+                   (실제 파일)     (add 상태)  (기록)
+ ─────────────────────────────────────────────────────
+  --soft           유지 ✅         유지 ✅     취소 ❌
+  --mixed (기본)   유지 ✅         취소 ❌     취소 ❌
+  --hard           취소 ❌         취소 ❌     취소 ❌
+```
+
+### reset vs revert
+
+| | `reset` | `revert` |
+|:---|:---|:---|
+| 방식 | 히스토리에서 커밋 삭제 | 취소하는 **새 커밋** 생성 |
+| 히스토리 | 변경됨 (재작성) | 보존됨 (추가만) |
+| Push된 커밋 | 사용 위험 | 안전하게 사용 가능 |
+| 협업 시 | 비추천 | 추천 |
+
+**원칙: 아직 Push하지 않았으면 `reset`, Push했으면 `revert`.**
+
+---
+
+## Ch 18. Stash — 작업 임시 보관
+
+### Stash가 필요한 순간
+
+> 기능 개발 도중인데, 긴급 버그 수정 요청이 왔다.
+> 커밋하기엔 애매하고, 그냥 브랜치를 바꾸면 수정 중인 파일이 섞인다.
+
+```bash
+# ── 기본 사용 ──
+git stash                               # 임시 보관
+git stash push -m "로그인 UI 작업 중"    # 메시지 포함 (권장)
+git stash -u                            # Untracked 파일도 포함
+git stash -a                            # .gitignore 대상까지 전부
+
+# ── 목록 확인 ──
 git stash list
+# stash@{0}: On feature/login: 로그인 UI 작업 중
+# stash@{1}: WIP on main: abc1234 이전 작업
 
-# 가장 최근 stash 복원 + 삭제
-git stash pop
+# ── 복원 ──
+git stash pop                  # 최근 stash 복원 + 목록에서 삭제
+git stash apply                # 복원만 (목록에 유지)
+git stash apply stash@{2}     # 특정 stash 복원
 
-# 가장 최근 stash 복원 (삭제 X)
-git stash apply
+# ── 내용 미리보기 ──
+git stash show                 # 변경 파일 목록
+git stash show -p stash@{0}   # diff 보기
 
-# 특정 stash 복원
-git stash apply stash@{2}
+# ── 삭제 ──
+git stash drop stash@{0}      # 특정 stash 삭제
+git stash clear                # 전체 삭제
 
-# stash 삭제
-git stash drop
-
-# 모든 stash 삭제
-git stash clear
-
-# 추적되지 않는 파일도 포함해서 stash
-git stash -u
-
-# stash 내용 미리보기
-git stash show -p stash@{0}
-
-# stash를 새 브랜치로 복원
+# ── stash를 새 브랜치로 ──
 git stash branch new-branch stash@{0}
 ```
 
-### 🌳 Git Worktree
-
 > [!TIP]
-> **Worktree** = 하나의 저장소에서 여러 브랜치를 동시에 작업!
+> `git stash push -m "설명"` 형태로 항상 메시지를 남기세요.
+> stash가 쌓이면 어떤 작업인지 알 수 없게 됩니다.
+
+---
+
+## Ch 19. Interactive Rebase
+
+커밋 히스토리를 편집할 수 있는 강력한 도구입니다.
+
+### 사용법
 
 ```bash
-# 새 worktree 생성
-git worktree add ../feature-branch feature/login
-
-# worktree 목록 보기
-git worktree list
-
-# worktree 삭제
-git worktree remove ../feature-branch
-
-# worktree 정리 (삭제된 디렉토리 정리)
-git worktree prune
+# 최근 4개 커밋을 편집
+git rebase -i HEAD~4
 ```
 
+에디터가 열리면 다음과 같은 화면이 나타납니다:
+
 ```
-📂 폴더 구조 예시:
-
-projects/
-├── my-project/          ← main 브랜치 (기본)
-│   └── .git/
-├── my-project-feature/  ← feature/login 브랜치 (worktree)
-└── my-project-hotfix/   ← hotfix/bug 브랜치 (worktree)
-
-💡 브랜치 전환 없이 동시에 여러 브랜치 작업 가능!
+pick a1b2c3d feat: 로그인 UI
+pick d4e5f6g fix: 오타 수정
+pick g7h8i9j feat: 로그인 로직
+pick k0l1m2n fix: 오타 또 수정
 ```
 
-### 🏷️ Tag (태그)
+### 사용 가능한 명령어
+
+| 명령 | 축약 | 설명 |
+|:---|:---|:---|
+| `pick` | `p` | 그대로 유지 |
+| `reword` | `r` | 커밋 메시지만 수정 |
+| `edit` | `e` | 커밋 내용 수정 (잠시 멈춤) |
+| `squash` | `s` | 이전 커밋과 합치기 (메시지도 합침) |
+| `fixup` | `f` | 이전 커밋과 합치기 (메시지는 버림) |
+| `drop` | `d` | 커밋 삭제 |
+
+### 실전 예시: 지저분한 커밋 정리
+
+**Before:**
+```
+pick a1b2c3d feat: 로그인 UI
+pick d4e5f6g fix: 오타 수정
+pick g7h8i9j feat: 로그인 로직
+pick k0l1m2n fix: 오타 또 수정
+```
+
+**편집 후:**
+```
+pick a1b2c3d feat: 로그인 UI
+fixup d4e5f6g fix: 오타 수정
+pick g7h8i9j feat: 로그인 로직
+fixup k0l1m2n fix: 오타 또 수정
+```
+
+**After:** 오타 수정 커밋들이 각각 이전 커밋에 흡수되어 깔끔한 2개 커밋만 남습니다.
+
+### 커밋 순서 변경
+
+에디터에서 줄 순서를 바꾸면 커밋 순서가 바뀝니다.
+
+```
+# 순서 변경 전                     # 순서 변경 후
+pick a1b2c3d 기능 A               pick g7h8i9j 기능 B
+pick d4e5f6g 리팩토링              pick a1b2c3d 기능 A
+pick g7h8i9j 기능 B               pick d4e5f6g 리팩토링
+```
+
+> [!CAUTION]
+> Interactive rebase도 히스토리를 재작성합니다.
+> Push한 커밋에는 사용하지 마세요.
+
+### autosquash
+
+커밋 메시지를 `fixup!` 또는 `squash!`로 시작하면, interactive rebase가 자동으로 매칭합니다.
 
 ```bash
-# 태그 생성 (버전 표시에 유용)
-git tag v1.0.0
+# 원래 커밋
+git commit -m "feat: 로그인 UI"
 
-# 메시지와 함께 태그 생성
-git tag -a v1.0.0 -m "첫 번째 릴리즈"
+# 나중에 수정할 때
+git commit -m "fixup! feat: 로그인 UI"
 
-# 태그 목록 보기
-git tag
+# autosquash 적용
+git rebase -i --autosquash HEAD~5
+# fixup 커밋이 자동으로 원래 커밋 아래에 fixup으로 배치됨!
+```
 
-# 태그 푸시
-git push origin v1.0.0
-
-# 모든 태그 푸시
-git push origin --tags
+```bash
+# 더 편하게: --fixup 플래그
+git commit --fixup=<커밋해시>
 ```
 
 ---
 
-## 🎨 Interactive Rebase
+## Ch 20. Cherry-pick, Bisect, Reflog
 
-> [!TIP]
-> **Interactive Rebase** = 커밋 히스토리를 자유자재로 편집!
+### Cherry-pick
 
-### 📝 기본 사용법
+특정 커밋 하나만 현재 브랜치로 가져옵니다.
 
-```bash
-# 최근 3개 커밋 편집
-git rebase -i HEAD~3
 ```
-
-### 🎮 편집 옵션들
-
-```bash
-# 에디터가 열리면 이런 화면이 나타남:
-
-pick abc1234 첫 번째 커밋
-pick def5678 두 번째 커밋
-pick ghi9012 세 번째 커밋
-
-# 명령어를 수정:
-# p, pick   = 커밋 유지
-# r, reword = 커밋 메시지 수정
-# e, edit   = 커밋 수정
-# s, squash = 이전 커밋과 합치기
-# f, fixup  = squash와 같지만 메시지 버림
-# d, drop   = 커밋 삭제
-```
-
-### 📊 예시: 커밋 합치기 (Squash)
-
-```mermaid
-flowchart LR
-    subgraph Before ["전"]
-        A["WIP: 작업중"] --> B["타이핑 수정"] --> C["버그 고침"]
-    end
-    
-    subgraph After ["후"]
-        D["✨ 로그인 기능 완성"]
-    end
-    
-    Before -->|"📦 squash"| After
-    
-    style D fill:#c8e6c9
+feature: A ── B ── C ── D
+                    ↓ cherry-pick
+main:    X ── Y ── C'
 ```
 
 ```bash
-# 3개 커밋을 1개로 합치기
-git rebase -i HEAD~3
+git cherry-pick abc1234
 
-# 에디터에서:
-pick abc1234 첫 번째 커밋
-squash def5678 두 번째 커밋     # s로 변경
-squash ghi9012 세 번째 커밋     # s로 변경
+# 커밋 생성 없이 변경사항만 적용 (Stage 상태)
+git cherry-pick --no-commit abc1234
 
-# 저장 후 새 커밋 메시지 작성
+# 여러 커밋
+git cherry-pick abc1234 def5678
+
+# 범위 (abc 다음부터 ghi까지)
+git cherry-pick abc1234..ghi9012
 ```
 
----
+**사용 시점:**
+- hotfix를 여러 브랜치에 적용해야 할 때
+- 다른 브랜치의 특정 커밋만 필요할 때
+- 실수로 다른 브랜치에 커밋한 것을 옮길 때
 
-## ⏰ Git Reflog - 실수 복구
+### Bisect — 이진 검색으로 버그 찾기
 
-> [!IMPORTANT]
-> **Reflog** = Git의 블랙박스! 모든 HEAD 이동 기록을 저장
+수백 개 커밋 중 버그를 도입한 커밋을 빠르게 찾습니다.
 
 ```
-🎮 게임으로 비유:
-
-   실수로 reset --hard 해버렸다! 😱
-   커밋이 다 날아갔어...
-   
-   → reflog로 시간여행 가능! ⏰
+1000개 커밋 중 버그 커밋 찾기:
+  순차 검색: 최대 1000번 확인
+  Bisect:   최대 10번 확인 (log₂1000 ≈ 10)
 ```
 
-### 🔍 Reflog 확인
+```bash
+# 시작
+git bisect start
+
+# 현재 상태(버그 있음)를 bad으로 표시
+git bisect bad
+
+# 정상이었던 커밋을 good으로 표시
+git bisect good v1.0.0
+
+# → Git이 중간 커밋으로 checkout
+# → 테스트 후 good 또는 bad 입력
+git bisect good
+# 또는
+git bisect bad
+
+# 반복하면 범인 커밋 발견!
+
+# 종료
+git bisect reset
+```
+
+**자동화:**
+
+```bash
+# 테스트 스크립트가 실패하는 커밋을 자동으로 찾기
+git bisect start HEAD v1.0.0
+git bisect run npm test
+```
+
+### Reflog — Git의 블랙박스
+
+HEAD의 **모든 이동 기록**이 저장됩니다.
+`reset --hard`로 날린 커밋도 여기서 찾을 수 있습니다.
 
 ```bash
 git reflog
+
+# 출력 예시:
+# a1b2c3d HEAD@{0}: reset: moving to HEAD~3
+# e4f5g6h HEAD@{1}: commit: 중요한 작업!
+# i7j8k9l HEAD@{2}: commit: 이전 작업
 ```
 
-```
-📤 출력 예시:
-
-a1b2c3d HEAD@{0}: reset: moving to HEAD~3
-e4f5g6h HEAD@{1}: commit: 중요한 커밋!
-i7j8k9l HEAD@{2}: commit: 이전 커밋
-k0l1m2n HEAD@{3}: checkout: moving from feature to main
-```
-
-### 🛠️ 삭제된 커밋 복구
+**삭제된 커밋 복구:**
 
 ```bash
-# reflog에서 복구하고 싶은 시점 찾기
+# reflog에서 복구 지점 확인
 git reflog
 
 # 해당 시점으로 복구
 git reset --hard HEAD@{1}
 
-# 또는 새 브랜치로 복구
-git checkout -b recovered-branch HEAD@{1}
+# 또는 새 브랜치로 복구 (더 안전)
+git switch -c recovered HEAD@{1}
 ```
 
-```
-🎉 복구 완료!
+**삭제된 브랜치 복구:**
 
-   삭제된 줄 알았던 커밋들이
-   reflog 덕분에 다시 살아났습니다!
+```bash
+# 실수로 브랜치를 삭제했을 때
+git branch -D feature/important  # 아차!
+
+# reflog에서 해당 브랜치의 마지막 커밋 찾기
+git reflog
+
+# 복구
+git switch -c feature/important HEAD@{N}
 ```
 
 > [!WARNING]
-> Reflog는 로컬에만 존재합니다. 기본 90일 후 삭제됩니다!
+> Reflog는 **로컬에만** 존재하며, 기본 90일 후 만료됩니다.
+> (`gc.reflogExpire` 설정으로 변경 가능)
 
 ---
 
-## 🔍 Git Bisect - 버그 찾기
+## Ch 21. Git Hooks & 자동화
 
-> [!TIP]
-> **Bisect** = 이진 검색으로 버그 발생 커밋 찾기!
+### Hook 종류
 
-```mermaid
-flowchart LR
-    A["✅ 정상"] --> B["❓"] --> C["❓"] --> D["❓"] --> E["❌ 버그"]
-    
-    B -.->|"이진 검색"| C
-    C -.->|"범인 발견!"| F["🐛 버그 커밋"]
-    
-    style A fill:#c8e6c9
-    style E fill:#ffcdd2
-    style F fill:#ffcdd2
-```
+| Hook | 실행 시점 | 주요 용도 |
+|:---|:---|:---|
+| `pre-commit` | 커밋 직전 | 린트, 포맷팅 검사 |
+| `prepare-commit-msg` | 커밋 메시지 편집기 열리기 전 | 메시지 템플릿 자동 삽입 |
+| `commit-msg` | 커밋 메시지 작성 후 | 메시지 형식 검증 |
+| `pre-push` | push 직전 | 테스트 실행 |
+| `post-merge` | merge 후 | 의존성 자동 설치 |
+| `pre-rebase` | rebase 직전 | 위험한 rebase 방지 |
 
-### 🎮 사용법
+### 예시: pre-commit으로 린트 검사
 
 ```bash
-# 1. bisect 시작
-git bisect start
-
-# 2. 현재(버그 있음)를 bad으로 표시
-git bisect bad
-
-# 3. 정상 작동했던 커밋을 good으로 표시
-git bisect good abc1234
-
-# 4. Git이 자동으로 중간 커밋으로 이동
-#    테스트 후 good/bad 판단
-git bisect good  # 또는
-git bisect bad
-
-# 5. 반복하면 버그 커밋 발견!
-
-# 6. bisect 종료
-git bisect reset
-```
-
-### 🤖 자동화 (Bisect Run)
-
-```bash
-# 테스트 스크립트로 자동 검색
-git bisect start HEAD abc1234
-git bisect run npm test
-
-# 테스트가 실패하는 커밋을 자동으로 찾아줌!
-```
-
----
-
-## 🪝 Git Hooks - 자동화
-
-> [!TIP]
-> **Hooks** = Git 이벤트 발생 시 자동 실행되는 스크립트
-
-### 📂 Hooks 위치
-
-```
-.git/hooks/
-├── pre-commit         # 커밋 전에 실행
-├── commit-msg         # 커밋 메시지 검사
-├── pre-push           # 푸시 전에 실행
-├── post-merge         # 병합 후 실행
-└── post-checkout      # 체크아웃 후 실행
-```
-
-### 📝 예시: pre-commit hook
-
-```bash
-# .git/hooks/pre-commit 파일 생성
 #!/bin/sh
+# .git/hooks/pre-commit
 
-# 린트 검사
 echo "🔍 린트 검사 중..."
-npm run lint
 
-# 린트 실패 시 커밋 중단
-if [ $? -ne 0 ]; then
-    echo "❌ 린트 오류! 커밋이 취소되었습니다."
-    exit 1
+# Staged 파일만 검사
+FILES=$(git diff --cached --name-only --diff-filter=ACMR -- '*.js' '*.ts')
+
+if [ -n "$FILES" ]; then
+    npx eslint $FILES
+    if [ $? -ne 0 ]; then
+        echo "❌ 린트 실패. 커밋이 취소되었습니다."
+        exit 1
+    fi
 fi
 
 echo "✅ 린트 통과!"
+exit 0
 ```
 
 ```bash
@@ -1423,630 +1567,484 @@ echo "✅ 린트 통과!"
 chmod +x .git/hooks/pre-commit
 ```
 
-### 📦 Husky (쉽게 Hook 관리)
+### Husky + lint-staged (실무 표준)
+
+`.git/hooks/`는 Git에 의해 추적되지 않아 팀원과 공유가 어렵습니다.
+Husky를 사용하면 이 문제를 해결할 수 있습니다.
 
 ```bash
-# Husky 설치
-npm install husky --save-dev
-npx husky install
-
-# pre-commit hook 추가
-npx husky add .husky/pre-commit "npm test"
+# 설치
+npm install -D husky lint-staged
+npx husky init
 ```
+
+`package.json`:
+```json
+{
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx}": ["eslint --fix", "prettier --write"],
+    "*.{json,md}": ["prettier --write"]
+  }
+}
+```
+
+`.husky/pre-commit`:
+```bash
+npx lint-staged
+```
+
+이 설정으로 **커밋할 때마다 변경된 파일만 자동으로 린트 + 포맷팅**됩니다.
 
 ---
 
-## 📦 Git Submodule
+## Ch 22. Submodule과 Subtree
 
-> [!TIP]
-> **Submodule** = 프로젝트 안에 다른 Git 프로젝트 포함
+### Submodule
 
-### 🎮 사용 예시
-
-```
-내 프로젝트/
-├── src/
-├── libs/
-│   └── shared-utils/  ← 📦 다른 Git 저장소 (submodule)
-└── README.md
-```
-
-### 🛠️ 기본 명령어
+프로젝트 안에 다른 Git 저장소를 **독립적으로** 포함합니다.
 
 ```bash
-# Submodule 추가
-git submodule add https://github.com/user/repo.git libs/shared-utils
+# 추가
+git submodule add https://github.com/user/lib.git libs/lib
 
-# Submodule 포함해서 Clone
-git clone --recurse-submodules https://github.com/user/main-project.git
+# Clone 시 Submodule 포함
+git clone --recurse-submodules https://github.com/user/project.git
 
-# 이미 Clone한 후 Submodule 가져오기
-git submodule init
-git submodule update
+# 이미 Clone한 경우
+git submodule init && git submodule update
 
-# 모든 Submodule 업데이트
-git submodule update --remote
+# 모든 Submodule 최신으로 업데이트
+git submodule update --remote --merge
 
-# Submodule 삭제
-git submodule deinit libs/shared-utils
-git rm libs/shared-utils
+# 상태 확인
+git submodule status
 ```
 
-### ⚠️ 주의사항
+> [!WARNING]
+> Submodule은 **특정 커밋**을 가리킵니다.
+> 업데이트 후 반드시 메인 프로젝트에서 커밋해야 합니다.
 
-```
-💡 Submodule은 특정 커밋을 가리킵니다!
-   
-   업데이트 후 반드시 커밋해야 합니다:
-   
-   cd libs/shared-utils
-   git pull origin main
-   cd ../..
-   git add libs/shared-utils
-   git commit -m "📦 submodule 업데이트"
-```
+### Subtree
 
-### 🍒 Cherry-pick
+Submodule과 달리, 외부 저장소의 내용을 **현재 저장소에 직접 병합**합니다.
 
 ```bash
-# 특정 커밋만 현재 브랜치로 가져오기
-git cherry-pick 커밋해시
+# 추가
+git subtree add --prefix=libs/lib https://github.com/user/lib.git main --squash
+
+# 업데이트
+git subtree pull --prefix=libs/lib https://github.com/user/lib.git main --squash
+
+# 변경사항을 원본에 Push
+git subtree push --prefix=libs/lib https://github.com/user/lib.git main
 ```
 
-```
-📊 Cherry-pick:
+### Submodule vs Subtree
 
-feature 브랜치:  A ── B ── C ── D
-                          ↓
-main 브랜치:     X ── Y ── C'  (C 커밋만 가져옴!)
-```
-
-### 📜 Rebase
-
-```bash
-# 브랜치 베이스 변경
-git rebase main
-```
-
-```
-📊 Merge vs Rebase:
-
-원래 상태:
-                ●──● feature
-               /
-    ──●──●──●  main
-
-Merge 후:
-                ●──●
-               /    \
-    ──●──●──●───────● (merge commit)
-
-Rebase 후:
-    ──●──●──●──●──● (깔끔한 일직선!)
-    
-💡 히스토리를 깔끔하게 유지하고 싶을 때 사용!
-⚠️ 이미 푸시한 커밋은 rebase 하지 마세요!
-```
+| | Submodule | Subtree |
+|:---|:---|:---|
+| 구조 | 별도 저장소 참조 | 코드가 직접 포함 |
+| Clone | `--recurse-submodules` 필요 | 추가 작업 없음 |
+| 학습 곡선 | 높음 | 낮음 |
+| 독립성 | 높음 (별도 저장소) | 낮음 (합쳐짐) |
+| 적합한 경우 | 라이브러리, 공유 모듈 | 벤더 코드, 간단한 공유 |
 
 ---
 
-## 🔀 Merge 전략
+## Ch 23. Worktree
 
-> [!TIP]
-> 상황에 따라 다른 Merge 전략을 사용하세요!
+하나의 저장소에서 **여러 브랜치를 동시에 체크아웃**할 수 있습니다.
 
-### 📊 Merge 종류 비교
-
-```mermaid
-flowchart TD
-    A["브랜치 병합"] --> B{"Merge 전략 선택"}
-    B --> C["Regular Merge"]
-    B --> D["Squash Merge"]
-    B --> E["Fast-forward"]
-    B --> F["Rebase"]
-    
-    C --> C1["모든 커밋 유지 + merge commit"]
-    D --> D1["모든 커밋을 1개로 합침"]
-    E --> E1["일직선 히스토리"]
-    F --> F1["깔끔한 일직선"]
-    
-    style C fill:#e3f2fd
-    style D fill:#fff3e0
-    style E fill:#e8f5e9
-    style F fill:#fce4ec
-```
-
-<table>
-<tr>
-<td width="50%">
-
-### 🔄 Regular Merge
 ```bash
-git merge feature/login
+# 새 worktree 생성
+git worktree add ../project-hotfix hotfix/critical-bug
+
+# 새 브랜치를 만들면서 worktree 생성
+git worktree add -b feature/new ../project-feature
+
+# 목록 보기
+git worktree list
+
+# 삭제
+git worktree remove ../project-hotfix
 ```
 
 ```
-      A---B---C  feature
-     /         \
-D---E-----------F  main (merge commit)
+디렉토리 구조:
+
+projects/
+├── my-project/            ← main 브랜치 (원래 저장소)
+├── project-hotfix/        ← hotfix 브랜치 (worktree)
+└── project-feature/       ← feature 브랜치 (worktree)
 ```
 
-✅ 모든 히스토리 보존
-❌ merge commit 생성
+**유용한 상황:**
+- 긴급 hotfix를 처리하면서 기존 작업은 그대로 유지하고 싶을 때
+- 두 브랜치를 동시에 비교하며 작업할 때
+- 빌드가 오래 걸리는 프로젝트에서 브랜치별로 동시 빌드
 
-</td>
-<td width="50%">
-
-### 📦 Squash Merge
-```bash
-git merge --squash feature/login
-git commit -m "기능 완성"
-```
-
-```
-      A---B---C  feature
-     /
-D---E-----------S  main (squashed)
-```
-
-✅ 깔끔한 1개 커밋
-❌ 세부 히스토리 손실
-
-</td>
-</tr>
-<tr>
-<td width="50%">
-
-### ⚡ Fast-forward Merge
-```bash
-git merge --ff-only feature/login
-```
-
-```
-D---E---A---B---C  main (fast-forwarded)
-```
-
-✅ 가장 깔끔한 히스토리
-❌ 브랜치 기록 없음
-
-</td>
-<td width="50%">
-
-### 📜 No Fast-forward
-```bash
-git merge --no-ff feature/login
-```
-
-```
-      A---B---C  feature
-     /         \
-D---E-----------F  main
-```
-
-✅ 브랜치 기록 보존
-✅ 명시적인 merge commit
-
-</td>
-</tr>
-</table>
-
-### 🎯 언제 어떤 전략을?
-
-| 상황 | 추천 전략 |
-|:---|:---|
-| 기능 브랜치 히스토리 보존 필요 | `--no-ff` |
-| PR의 여러 커밋을 하나로 | `--squash` |
-| 간단한 hotfix | `--ff-only` |
-| 기본 협업 | Regular merge |
+stash와 달리 **작업 중인 상태를 건드리지 않아도** 됩니다.
 
 ---
 
-## 💡 유용한 팁들
-
-<div align="center">
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Light%20Bulb.png" alt="Light Bulb" width="50" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Hammer%20and%20Wrench.png" alt="Tools" width="60" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Gem%20Stone.png" alt="Gem" width="50" />
-</div>
-
-### 📋 자주 쓰는 명령어 별칭 (Alias)
-
-```bash
-# 별칭 설정
-git config --global alias.st status
-git config --global alias.co checkout
-git config --global alias.br branch
-git config --global alias.ci commit
-git config --global alias.lg "log --oneline --graph --all"
-
-# 사용 예시
-git st      # git status
-git co main # git checkout main
-git lg      # 예쁜 로그 그래프
-```
-
-### 🚫 .gitignore
-
-> [!IMPORTANT]
-> `.gitignore` = **Git이 무시할 파일 목록**
-
-```mermaid
-flowchart LR
-    A["📂 모든 파일"] --> B{".gitignore 확인"}
-    B -->|"목록에 있음"| C["❌ Git 무시"]
-    B -->|"목록에 없음"| D["✅ Git 추적"]
-    
-    style C fill:#ffcdd2
-    style D fill:#c8e6c9
-```
-
-```bash
-# .gitignore 파일 생성
-touch .gitignore
-```
-
-<details>
-<summary>📝 <b>.gitignore 템플릿 보기</b></summary>
 <br>
+
+# Part 6 — 트러블슈팅
+
+---
+
+## Ch 24. 자주 겪는 실수와 해결법
+
+### 🔥 "실수로 잘못된 브랜치에 커밋했다"
+
+```bash
+# 방법: 커밋을 올바른 브랜치로 옮기기
+
+# 1. 현재 커밋 해시 기억
+git log --oneline -1
+# → abc1234
+
+# 2. 올바른 브랜치로 이동
+git switch correct-branch
+
+# 3. Cherry-pick
+git cherry-pick abc1234
+
+# 4. 잘못된 브랜치에서 커밋 제거
+git switch wrong-branch
+git reset --hard HEAD~1
+```
+
+### 🔥 "git add .을 했는데 큰 파일이 포함됐다"
+
+```bash
+# Stage에서 제거 (파일 자체는 유지)
+git restore --staged large-file.zip
+```
+
+### 🔥 "Push한 커밋에 비밀키가 포함됐다"
+
+> [!CAUTION]
+> 비밀키가 한 번이라도 Push되었다면, **키를 즉시 폐기하고 새로 발급**하세요.
+> Git 히스토리에서 제거해도 누군가 이미 복제했을 수 있습니다.
+
+```bash
+# 히스토리에서 파일 완전 제거 (git-filter-repo 사용, 권장)
+pip install git-filter-repo
+git filter-repo --path .env --invert-paths
+
+# 강제 push
+git push --force-with-lease --all
+```
+
+### 🔥 "merge를 했는데 되돌리고 싶다"
+
+```bash
+# 아직 커밋(merge commit)이 안 됐으면
+git merge --abort
+
+# 이미 merge commit이 됐으면
+git revert -m 1 <merge-commit-hash>
+# -m 1: 첫 번째 부모(main)를 기준으로 revert
+```
+
+### 🔥 "detached HEAD 상태에 빠졌다"
+
+HEAD가 브랜치가 아닌 특정 커밋을 직접 가리키는 상태입니다.
+
+```bash
+# 현재 상태에서 새 브랜치 만들기
+git switch -c new-branch
+
+# 또는 기존 브랜치로 돌아가기
+git switch main
+```
+
+### 🔥 "tracked 파일을 .gitignore에 추가했는데 계속 추적된다"
+
+```bash
+# Git의 추적 목록(index)에서 제거 (파일 자체는 유지)
+git rm --cached <파일>
+git commit -m "chore: 파일 추적 중단"
+```
+
+---
+
+## Ch 25. .gitignore 완전 가이드
+
+### 문법
 
 ```gitignore
-# ━━━━━━━━━━━ 운영체제 파일 ━━━━━━━━━━━
-.DS_Store          # macOS
-Thumbs.db          # Windows
+# 주석
 
-# ━━━━━━━━━━━ 환경 설정 파일 ━━━━━━━━━━━
-.env
-.env.local
-.env.*.local
+# 특정 파일
+secret.key
 
-# ━━━━━━━━━━━ 의존성 폴더 ━━━━━━━━━━━
-node_modules/      # Node.js
-venv/              # Python
-__pycache__/       # Python
-vendor/            # PHP
+# 특정 확장자
+*.log
+*.tmp
 
-# ━━━━━━━━━━━ 빌드 결과물 ━━━━━━━━━━━
+# 특정 디렉토리
+node_modules/
 dist/
 build/
+
+# 하위 디렉토리 어디서든
+**/logs/
+
+# 부정 패턴 (예외)
+*.log
+!important.log     # important.log는 추적
+
+# 특정 디렉토리 내 특정 확장자
+doc/**/*.pdf
+```
+
+### 범용 템플릿
+
+```gitignore
+# ── OS ──
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ── Editor / IDE ──
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ── 환경 변수 ──
+.env
+.env.*
+!.env.example
+
+# ── 의존성 ──
+node_modules/
+vendor/
+venv/
+__pycache__/
+*.pyc
+
+# ── 빌드 결과물 ──
+dist/
+build/
+out/
 *.exe
 *.dll
+*.so
+*.dylib
 
-# ━━━━━━━━━━━ IDE 설정 ━━━━━━━━━━━
-.idea/             # JetBrains
-.vscode/           # VS Code
-*.swp              # Vim
-
-# ━━━━━━━━━━━ 로그 파일 ━━━━━━━━━━━
+# ── 로그 ──
 *.log
 logs/
-npm-debug.log*
+
+# ── 테스트 커버리지 ──
+coverage/
+.nyc_output/
 ```
 
-</details>
+> [!TIP]
+> [gitignore.io](https://www.toptal.com/developers/gitignore)에서
+> 프로젝트 유형을 선택하면 .gitignore를 자동 생성해줍니다.
 
-#### 🌐 유용한 사이트
+### 글로벌 .gitignore
 
-[gitignore.io](https://www.toptal.com/developers/gitignore) - 프로젝트에 맞는 .gitignore 자동 생성!
-
-### 🔑 유용한 명령어 모음
+모든 저장소에 공통으로 적용할 규칙:
 
 ```bash
-# 누가 어떤 줄을 수정했는지 보기
-git blame 파일명
+git config --global core.excludesFile ~/.gitignore_global
+```
 
-# 커밋 간 파일 변경 통계
-git diff --stat 커밋1 커밋2
-
-# 특정 단어를 포함한 커밋 찾기
-git log --grep="버그"
-
-# 특정 파일의 변경 이력
-git log --follow -p 파일명
-
-# 삭제된 파일 복구
-git checkout HEAD~1 -- 삭제된파일명
-
-# 모든 브랜치에서 특정 커밋 찾기
-git branch --contains 커밋해시
+`~/.gitignore_global`:
+```gitignore
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
 ```
 
 ---
 
-## 📋 빠른 참조 카드
+## Ch 26. 성능 최적화
 
-### ⭐ 가장 많이 쓰는 명령어 TOP 10
+### 대규모 저장소에서의 팁
 
+```bash
+# Sparse Checkout — 필요한 디렉토리만 가져오기
+git clone --no-checkout https://github.com/user/huge-repo.git
+cd huge-repo
+git sparse-checkout init --cone
+git sparse-checkout set src/mymodule docs
+git checkout main
+
+# Partial Clone — Blob 없이 Clone (필요 시 다운로드)
+git clone --filter=blob:none https://github.com/user/repo.git
+
+# Shallow Clone — 히스토리 제한
+git clone --depth 10 https://github.com/user/repo.git
+
+# 이후 히스토리가 더 필요하면
+git fetch --unshallow
+
+# 가비지 컬렉션
+git gc --aggressive
+
+# fsmonitor 활성화 (대규모 저장소 status 속도 개선)
+git config core.fsmonitor true          # Git 내장 (2.37+)
+git config core.untrackedCache true
 ```
-┌────────────────────────────────────────────────────────────┐
-│  #  │  명령어                    │  설명                  │
-├─────┼────────────────────────────┼────────────────────────┤
-│  1  │  git status               │  현재 상태 확인         │
-│  2  │  git add .                │  모든 변경사항 스테이지   │
-│  3  │  git commit -m "메시지"    │  커밋                  │
-│  4  │  git push                 │  원격에 푸시            │
-│  5  │  git pull                 │  원격에서 풀            │
-│  6  │  git log --oneline        │  커밋 로그 보기         │
-│  7  │  git switch -c 브랜치     │  새 브랜치 생성+이동     │
-│  8  │  git switch 브랜치        │  브랜치 이동            │
-│  9  │  git merge 브랜치         │  브랜치 병합            │
-│ 10  │  git diff                 │  변경사항 보기          │
-└────────────────────────────────────────────────────────────┘
-```
 
-### 🎯 상황별 명령어
+### Commit Graph 활성화
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│ 🚀 프로젝트 시작                                              │
-├─────────────────────────────────────────────────────────────┤
-│ 새 프로젝트:  git init                                       │
-│ 복제:        git clone URL                                   │
-└─────────────────────────────────────────────────────────────┘
-
-┌─────────────────────────────────────────────────────────────┐
-│ 💾 변경사항 저장                                              │
-├─────────────────────────────────────────────────────────────┤
-│ 상태 확인:   git status                                      │
-│ 추가:        git add .                                       │
-│ 커밋:        git commit -m "메시지"                           │
-│ 푸시:        git push                                        │
-└─────────────────────────────────────────────────────────────┘
-
-┌─────────────────────────────────────────────────────────────┐
-│ 🌿 브랜치 작업                                                │
-├─────────────────────────────────────────────────────────────┤
-│ 목록:        git branch                                      │
-│ 생성+이동:   git switch -c 이름                               │
-│ 이동:        git switch 이름                                  │
-│ 병합:        git merge 이름                                   │
-│ 삭제:        git branch -d 이름                               │
-└─────────────────────────────────────────────────────────────┘
-
-┌─────────────────────────────────────────────────────────────┐
-│ ⏪ 되돌리기                                                   │
-├─────────────────────────────────────────────────────────────┤
-│ 파일 되돌리기:    git restore 파일명                          │
-│ add 취소:         git restore --staged 파일명                 │
-│ 커밋 취소(안전):   git revert 커밋해시                         │
-│ 커밋 취소(강력):   git reset --hard HEAD~1                    │
-└─────────────────────────────────────────────────────────────┘
+```bash
+# log, merge-base 등의 속도 향상
+git config --global fetch.writeCommitGraph true
+git commit-graph write --reachable
 ```
 
 ---
 
-## 🎓 마무리
+<br>
 
-### 🎯 Git 마스터가 되는 3단계
+# 부록
 
-```mermaid
-journey
-    title Git 마스터 여정 🚀
-    section 1단계: 기초
-      git init 배우기: 5: 😊
-      add, commit 연습: 4: 😊
-      push, pull 익히기: 4: 😊
-    section 2단계: 브랜치
-      branch 생성: 4: 😊
-      merge 연습: 3: 😅
-      충돌 해결: 2: 😰
-    section 3단계: 협업
-      Pull Request: 4: 😊
-      Code Review: 4: 😊
-      오픈소스 기여: 5: 🎉
+---
+
+## Appendix A: 명령어 치트시트
+
+### 일상
+
+| 명령어 | 설명 |
+|:---|:---|
+| `git init` | 저장소 생성 |
+| `git clone <url>` | 원격 저장소 복제 |
+| `git status` | 현재 상태 확인 |
+| `git add <파일>` | Staging |
+| `git add .` | 전체 Staging |
+| `git add -p` | 부분 Staging |
+| `git commit -m "msg"` | 커밋 |
+| `git commit --amend` | 마지막 커밋 수정 |
+| `git diff` | 변경사항 비교 |
+| `git diff --staged` | Stage된 변경사항 |
+| `git log --oneline` | 커밋 로그 |
+| `git log --oneline --graph --all` | 그래프 로그 |
+
+### 브랜치
+
+| 명령어 | 설명 |
+|:---|:---|
+| `git branch` | 브랜치 목록 |
+| `git switch -c <이름>` | 브랜치 생성 + 이동 |
+| `git switch <이름>` | 브랜치 이동 |
+| `git merge <이름>` | 병합 |
+| `git merge --squash <이름>` | 스쿼시 병합 |
+| `git rebase <이름>` | 리베이스 |
+| `git branch -d <이름>` | 브랜치 삭제 |
+
+### 원격
+
+| 명령어 | 설명 |
+|:---|:---|
+| `git remote -v` | 원격 저장소 확인 |
+| `git push -u origin <이름>` | 첫 Push (업스트림 설정) |
+| `git push` | Push |
+| `git pull` | Pull (fetch + merge) |
+| `git pull --rebase` | Pull (fetch + rebase) |
+| `git fetch` | Fetch만 |
+| `git push origin --delete <이름>` | 원격 브랜치 삭제 |
+
+### 되돌리기
+
+| 명령어 | 설명 |
+|:---|:---|
+| `git restore <파일>` | 파일 수정 취소 |
+| `git restore --staged <파일>` | add 취소 |
+| `git reset --soft HEAD~1` | 커밋 취소 (Stage 유지) |
+| `git reset HEAD~1` | 커밋+add 취소 |
+| `git reset --hard HEAD~1` | 전부 취소 |
+| `git revert <해시>` | 안전한 되돌리기 |
+| `git stash` | 임시 보관 |
+| `git stash pop` | 임시 보관 복원 |
+
+### 조사 & 디버깅
+
+| 명령어 | 설명 |
+|:---|:---|
+| `git blame <파일>` | 줄 단위 작성자 확인 |
+| `git bisect start` | 이진 검색 시작 |
+| `git reflog` | HEAD 이동 기록 |
+| `git log -S "검색어"` | 코드 변경 검색 |
+| `git show <해시>` | 커밋 상세 보기 |
+
+---
+
+## Appendix B: Alias 추천 설정
+
+```bash
+git config --global alias.s "status -s"
+git config --global alias.l "log --oneline -20"
+git config --global alias.lg "log --oneline --graph --all --decorate"
+git config --global alias.co "checkout"
+git config --global alias.sw "switch"
+git config --global alias.br "branch"
+git config --global alias.ci "commit"
+git config --global alias.ca "commit --amend --no-edit"
+git config --global alias.unstage "restore --staged"
+git config --global alias.last "log -1 HEAD --stat"
+git config --global alias.df "diff --stat"
+git config --global alias.who "shortlog -sn --no-merges"
+git config --global alias.stl "stash list"
+git config --global alias.stp "stash pop"
 ```
 
-<table>
-<tr>
-<td width="33%" align="center">
+설정 후 사용 예시:
 
-### 🥉 1단계
-**기초 익히기**
-`1-2주`
-
-```
-████████░░░░░░░░ 50%
-```
-
-- [x] git init
-- [x] git add
-- [x] git commit
-- [ ] git push
-- [ ] git pull
-
-</td>
-<td width="33%" align="center">
-
-### 🥈 2단계
-**브랜치 활용**
-`2-4주`
-
-```
-░░░░░░░░░░░░░░░░  0%
-```
-
-- [ ] git branch
-- [ ] git switch
-- [ ] git merge
-- [ ] 충돌 해결
-
-</td>
-<td width="33%" align="center">
-
-### 🥇 3단계
-**협업 마스터**
-`1-2개월`
-
-```
-░░░░░░░░░░░░░░░░  0%
-```
-
-- [ ] Pull Request
-- [ ] Code Review
-- [ ] 오픈소스 기여
-
-</td>
-</tr>
-</table>
-
-### 💪 기억하세요!
-
-```
-╔═══════════════════════════════════════════════════════════════╗
-║                                                               ║
-║   "처음엔 누구나 Git이 어렵습니다.                                ║
-║    하지만 매일 조금씩 사용하다 보면                                ║
-║    어느새 자연스럽게 손에 익게 됩니다!"                            ║
-║                                                               ║
-║                              🚀 Happy Coding! 🚀             ║
-║                                                               ║
-╚═══════════════════════════════════════════════════════════════╝
+```bash
+git s              # git status -s
+git l              # 최근 20개 커밋
+git lg             # 그래프 로그
+git ca             # 마지막 커밋에 현재 Stage된 내용 추가
+git unstage .      # 전체 unstage
+git who            # 기여자별 커밋 수
 ```
 
 ---
 
-## 🎆 학습 완료 축하합니다!
+## Appendix C: 추천 학습 자료
 
-<div align="center">
-
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Fireworks.png" alt="Fireworks" width="80" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Sparkler.png" alt="Sparkler" width="80" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Fireworks.png" alt="Fireworks" width="80" />
-
-### 🎉🎊 축하합니다! 🎊🎉
-
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Party%20Popper.png" alt="Party Popper" width="100" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Confetti%20Ball.png" alt="Confetti Ball" width="100" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Party%20Popper.png" alt="Party Popper" width="100" />
-
-
-
-### 🏆 Git 학습을 완료하셨네요!
-
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Clapping%20Hands.png" alt="Clapping Hands" width="80" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Trophy.png" alt="Trophy" width="100" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Clapping%20Hands.png" alt="Clapping Hands" width="80" />
-
-**이제 당신은 Git 마스터입니다!**
-
-```
-████████████████████ 100% 초급 완료! ✅
-████████████████████ 100% 중급 완료! ✅
-████████████████████ 100% 고급 완료! ✅
-```
-
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Glowing%20Star.png" alt="Star" width="30" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Glowing%20Star.png" alt="Star" width="40" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Glowing%20Star.png" alt="Star" width="50" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Glowing%20Star.png" alt="Star" width="40" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Glowing%20Star.png" alt="Star" width="30" />
-
-<br>
-
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Partying%20Face.png" alt="Partying" width="80" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Star-Struck.png" alt="Star Struck" width="80" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Partying%20Face.png" alt="Partying" width="80" />
-
-</div>
-
----
-
-## 📚 더 배우기
-
-<table>
-<tr>
-<td align="center" width="25%">
-<a href="https://git-scm.com/doc">
-<img src="https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png" width="60">
-<br>
-<b>Git 공식 문서</b>
-</a>
-</td>
-<td align="center" width="25%">
-<a href="https://learngitbranching.js.org/">
-<img src="https://learngitbranching.js.org/assets/learnGitBranching.png" width="60">
-<br>
-<b>Learn Git Branching</b>
-</a>
-<br>
-🎮 게임으로 배우기
-</td>
-<td align="center" width="25%">
-<a href="https://docs.github.com">
-<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="60">
-<br>
-<b>GitHub Docs</b>
-</a>
-</td>
-<td align="center" width="25%">
-<a href="https://training.github.com/downloads/ko/github-git-cheat-sheet/">
-📋
-<br>
-<b>Git Cheat Sheet</b>
-</a>
-<br>
-🎓 명령어 요약
-</td>
-</tr>
-</table>
-
----
-
-## ⌨️ 단축키 & 팁
-
-### 🖥️ 유용한 터미널 단축키
-
-| 단축키 | 설명 |
-|:---:|:---|
-| <kbd>↑</kbd> / <kbd>↓</kbd> | 이전/다음 명령어 |
-| <kbd>Ctrl</kbd> + <kbd>C</kbd> | 현재 명령 취소 |
-| <kbd>Ctrl</kbd> + <kbd>L</kbd> | 화면 정리 |
-| <kbd>Tab</kbd> | 자동 완성 |
-| <kbd>Ctrl</kbd> + <kbd>R</kbd> | 명령어 검색 |
-
-### 🎯 VS Code Git 단축키
-
-| 단축키 | 설명 |
-|:---:|:---|
-| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>G</kbd> | Git 패널 열기 |
-| <kbd>Ctrl</kbd> + <kbd>Enter</kbd> | 커밋 (메시지 입력 후) |
+| 자료 | 유형 | 설명 |
+|:---|:---|:---|
+| [Pro Git Book](https://git-scm.com/book/ko/v2) | 📖 책 (무료) | Git 공식 문서. 한국어 번역 있음 |
+| [Learn Git Branching](https://learngitbranching.js.org/?locale=ko) | 🎮 인터랙티브 | 브라우저에서 브랜치를 시각적으로 연습 |
+| [Git Immersion](https://gitimmersion.com) | 🧪 튜토리얼 | 단계별 실습 |
+| [Oh My Git!](https://ohmygit.org) | 🎮 게임 | Git을 게임으로 배우기 |
+| [Conventional Commits](https://www.conventionalcommits.org/ko/v1.0.0/) | 📋 스펙 | 커밋 메시지 컨벤션 |
+| [GitHub Skills](https://skills.github.com) | 🎓 공식 교육 | GitHub 공식 실습 코스 |
+| [gitignore.io](https://www.toptal.com/developers/gitignore) | 🛠️ 도구 | .gitignore 자동 생성 |
 
 ---
 
 <div align="center">
 
-### 🏆 Git 마스터 뱃지
-
-학습을 완료하면 이 뱃지를 프로필에 달아보세요!
-
-![Git Beginner](https://img.shields.io/badge/Git-Beginner-green?style=for-the-badge&logo=git)
-![Git Intermediate](https://img.shields.io/badge/Git-Intermediate-blue?style=for-the-badge&logo=git)
-![Git Master](https://img.shields.io/badge/Git-Master-gold?style=for-the-badge&logo=git)
-
----
-
-### 💬 피드백
-
-이 가이드가 도움이 되었다면 ⭐ **Star**를 눌러주세요!
-
-질문이나 제안이 있다면 **Issue**를 남겨주세요.
-
----
-
-### 🎆 감사합니다!
-
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Sparkling%20Heart.png" alt="Heart" width="30" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Star-Struck.png" alt="Star Struck" width="40" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Sparkles.png" alt="Sparkles" width="40" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Star-Struck.png" alt="Star Struck" width="40" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Sparkling%20Heart.png" alt="Heart" width="30" />
+<br>
 
 ```
-✨ 함께 성장하는 개발자가 되세요! ✨
+이 가이드가 도움이 되었다면 ⭐ Star를 눌러주세요.
+오류나 개선 사항은 Issue로 남겨주세요.
 ```
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=120&section=footer&animation=twinkling" width="100%">
+<br>
 
-**Made with ❤️ for Git beginners**
+**"Git은 도구입니다. 도구는 이해하면 두렵지 않습니다."**
 
+<br>
+
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![Made with](https://img.shields.io/badge/Made_with-❤️-red?style=for-the-badge)
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:F05032,50:DE4C36,100:B8321A&height=120&section=footer&animation=twinkling" width="100%" />
 
 </div>
